@@ -1,0 +1,25 @@
+condID,weather,surfaceCond,dayNight
+1,Cloudy,Not Reported,Day
+2,Unknown,Snow,
+3,Clear,Water (standing / moving),Night
+4,Clear,Wet,
+5,Unknown,Wet,
+6,Wind,Dry,Day
+7,Freezing Precipitation,Water (standing / moving),Night
+8,Wind,Slush,Day
+9,Cloudy,Unknown,
+10,Clear,,
+11,Unknown,"Sand, mud, dirt, oil, gravel",Night
+12,Unknown,Slush,Day
+13,Rain,Unknown,Night
+14,Unknown,Dry,
+15,Cloudy,Unknown,Night
+16,Unknown,Ice,
+17,Clear,Not Reported,Day
+18,Cloudy,Slush,Night
+19,Unknown,Other - Explain in Narrative,Day
+20,Unknown,Not Reported,Night
+22,Wind,Ice,Night
+23,Freezing Precipitation,Unknown,Day
+24,Freezing Precipitation,Other - Explain in Narrative,Night
+25,Wind,Wet,Night
