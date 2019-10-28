@@ -1,15 +1,13 @@
-import csv
+import pandas
 
-with open("All Data.csv") as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {",".join(row)}')
-            line_count+=1
-        else:
-            print(f'Row {line_count}\t{row[0]} \t{row[1]} \t{row[2]}\t{row[3]}\t{row[4]}\t{row[5]}\t{row[6]}\t{row[7]}'
-                  f'\t{row[8]}\t{row[9]}\t{row[10]}\t{row[11]}\t{row[12]}\t{row[13]}')
-            line_count += 1
-    print(f'Processed {line_count} lines.')
-    
+#df is the base data frame that the data is stored as
+df = pandas.read_csv("All Data.csv")
+print(df)
+print(list(df))
+df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
+print(df_weather)
+df_weather.drop_duplicates(keep=False, inplace=True)
+print(df_weather)
+
+df_weather.to_csv("Weather CSV.csv")
+df.to_csv("Empty CSV.csv")
