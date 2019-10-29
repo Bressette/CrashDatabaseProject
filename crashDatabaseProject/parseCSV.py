@@ -1,17 +1,22 @@
 import pandas
 
+
 def get_date(s):
     s = s.rsplit("T", maxsplit=1)[0]
     return s
 
+
 def get_time(s):
     s = s.rsplit("T", maxsplit=1)[1]
+    s = s.replace("Z", "")
     return s
+
 
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 print(df)
 print(list(df))
+
 df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
 print(df_weather)
 df_weather.drop_duplicates(keep='first', inplace=True)
@@ -36,18 +41,24 @@ df_animal.to_csv("animal.csv")
 
 
 
-
-df_accident = df[['ACCIDENTDATE']]
-df_accident["date"] = df_accident["ACCIDENTDATE"].apply(get_date)
+#creates new columns to store separated date and time
+df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
+df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
 print(df_accident)
 
-#df_accident["date"] = df_accident["Dateandtime"].apply(get_date)
-#separates the first segment change index to 1 for second part of string
-"""
-s = "DateTDate2"
-s = s.rsplit("T", maxsplit=1)[0]
-print(s)
-"""
+df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
+print(df_accident)
+
+df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
+
+print(df_accident)
+print(list(df_accident))
+
+df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
+df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
+
+df_final_accident.to_csv("accident.csv")
+
 
 
 
