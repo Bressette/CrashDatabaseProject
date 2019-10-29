@@ -2,114 +2,114 @@
 0,Freezing Precipitation,Snow,Day
 1,Freezing Precipitation,Ice,Day
 2,Cloudy,Wet,Night
-4,Wind,Ice,Day
-5,Unknown,,Night
-6,Clear,Dry,Night
-8,Cloudy,Dry,Day
-9,Freezing Precipitation,Snow,Night
-10,Unknown,,Day
-11,Clear,Dry,Day
-13,Clear,Wet,Night
-14,Unknown,Dry,Day
-15,Clear,Snow,Day
-16,Clear,Slush,Day
-27,Rain,Wet,Day
-39,Clear,Wet,Day
-40,Cloudy,Dry,Night
-41,Freezing Precipitation,Slush,Day
-43,Cloudy,Ice,Day
-44,Cloudy,Wet,Day
-93,Cloudy,Ice,Night
-95,Rain,Wet,Night
-98,Unknown,Unknown,Day
-99,Clear,Ice,Night
-102,Unknown,,
-114,Freezing Precipitation,,Day
-148,Rain,Other - Explain in Narrative,Day
-157,Clear,,Day
-161,Cloudy,"Sand, mud, dirt, oil, gravel",Night
-166,Cloudy,Snow,Night
-167,Clear,Ice,Day
-171,Unknown,Unknown,Night
-203,Freezing Precipitation,Wet,Night
-226,Cloudy,Snow,Day
-227,Cloudy,Slush,Day
-260,Freezing Precipitation,,Night
-263,Clear,Snow,Night
-317,Rain,Water (standing / moving),Day
-320,Rain,"Sand, mud, dirt, oil, gravel",Day
-412,Rain,Ice,Night
-414,Cloudy,,Day
-415,Freezing Precipitation,Wet,Day
-433,Wind,Snow,Day
-445,Clear,"Sand, mud, dirt, oil, gravel",Day
-469,Clear,Slush,Night
-479,Cloudy,Not Reported,Day
-490,Freezing Precipitation,Ice,Night
-528,Cloudy,Unknown,Day
-584,Unknown,Wet,Day
-626,Cloudy,Other - Explain in Narrative,Day
-652,Unknown,Dry,Night
-739,Unknown,Snow,
-745,Clear,Unknown,Day
-782,Unknown,"Sand, mud, dirt, oil, gravel",Day
-974,Rain,Slush,Day
-983,Clear,Other - Explain in Narrative,Night
-1065,Unknown,Snow,Day
-1118,Unknown,Wet,Night
-1183,Clear,Water (standing / moving),Night
-1224,Clear,Dry,
-1376,Freezing Precipitation,Slush,Night
-1379,Cloudy,"Sand, mud, dirt, oil, gravel",Day
-1384,Rain,Dry,Day
-1418,Clear,Other - Explain in Narrative,Day
-1575,Unknown,Not Reported,Day
-1642,Freezing Precipitation,Dry,Day
-1796,Freezing Precipitation,Other - Explain in Narrative,Day
-1881,Rain,Wet,
-1905,Unknown,Unknown,
-1910,Rain,"Sand, mud, dirt, oil, gravel",Night
-1989,Unknown,Ice,Night
-2073,Rain,,Night
-2135,Unknown,Ice,Day
-2138,Rain,Ice,Day
-2302,Clear,"Sand, mud, dirt, oil, gravel",Night
-2452,Wind,Wet,Day
-2499,Clear,,Night
-2893,Clear,Wet,
-2900,Unknown,Wet,
-3062,Freezing Precipitation,"Sand, mud, dirt, oil, gravel",Day
-3084,Rain,Dry,Night
-3127,Rain,,Day
-3420,Rain,Snow,Night
-3471,Wind,Snow,Night
-3750,Wind,Dry,Day
-3897,Unknown,Other - Explain in Narrative,Night
-3917,Cloudy,Dry,
-4195,Rain,Water (standing / moving),Night
-4399,Freezing Precipitation,Dry,Night
-4783,Freezing Precipitation,Water (standing / moving),Night
-4870,Wind,Slush,Day
-4993,Cloudy,Unknown,
-5887,Rain,Slush,Night
-5959,Clear,,
-6274,Clear,Unknown,Night
-6289,Unknown,"Sand, mud, dirt, oil, gravel",Night
-6451,Unknown,Slush,Day
-6861,Cloudy,,Night
-7120,Cloudy,Other - Explain in Narrative,Night
-7134,Unknown,Snow,Night
-7181,Rain,Unknown,Night
-8327,Unknown,Dry,
-8456,Cloudy,Unknown,Night
-8581,Unknown,Ice,
-9536,Rain,Snow,Day
-10087,Clear,Not Reported,Day
-10568,Cloudy,Slush,Night
-10794,Unknown,Other - Explain in Narrative,Day
-11041,Unknown,Not Reported,Night
-11427,Unknown,Not Reported,
-11751,Wind,Ice,Night
-12037,Freezing Precipitation,Unknown,Day
-12096,Freezing Precipitation,Other - Explain in Narrative,Night
-12484,Wind,Wet,Night
+3,Wind,Ice,Day
+4,Unknown,,Night
+5,Clear,Dry,Night
+6,Cloudy,Dry,Day
+7,Freezing Precipitation,Snow,Night
+8,Unknown,,Day
+9,Clear,Dry,Day
+10,Clear,Wet,Night
+11,Unknown,Dry,Day
+12,Clear,Snow,Day
+13,Clear,Slush,Day
+14,Rain,Wet,Day
+15,Clear,Wet,Day
+16,Cloudy,Dry,Night
+17,Freezing Precipitation,Slush,Day
+18,Cloudy,Ice,Day
+19,Cloudy,Wet,Day
+20,Cloudy,Ice,Night
+21,Rain,Wet,Night
+22,Unknown,Unknown,Day
+23,Clear,Ice,Night
+24,Unknown,,
+25,Freezing Precipitation,,Day
+26,Rain,Other - Explain in Narrative,Day
+27,Clear,,Day
+28,Cloudy,"Sand, mud, dirt, oil, gravel",Night
+29,Cloudy,Snow,Night
+30,Clear,Ice,Day
+31,Unknown,Unknown,Night
+32,Freezing Precipitation,Wet,Night
+33,Cloudy,Snow,Day
+34,Cloudy,Slush,Day
+35,Freezing Precipitation,,Night
+36,Clear,Snow,Night
+37,Rain,Water (standing / moving),Day
+38,Rain,"Sand, mud, dirt, oil, gravel",Day
+39,Rain,Ice,Night
+40,Cloudy,,Day
+41,Freezing Precipitation,Wet,Day
+42,Wind,Snow,Day
+43,Clear,"Sand, mud, dirt, oil, gravel",Day
+44,Clear,Slush,Night
+45,Cloudy,Not Reported,Day
+46,Freezing Precipitation,Ice,Night
+47,Cloudy,Unknown,Day
+48,Unknown,Wet,Day
+49,Cloudy,Other - Explain in Narrative,Day
+50,Unknown,Dry,Night
+51,Unknown,Snow,
+52,Clear,Unknown,Day
+53,Unknown,"Sand, mud, dirt, oil, gravel",Day
+54,Rain,Slush,Day
+55,Clear,Other - Explain in Narrative,Night
+56,Unknown,Snow,Day
+57,Unknown,Wet,Night
+58,Clear,Water (standing / moving),Night
+59,Clear,Dry,
+60,Freezing Precipitation,Slush,Night
+61,Cloudy,"Sand, mud, dirt, oil, gravel",Day
+62,Rain,Dry,Day
+63,Clear,Other - Explain in Narrative,Day
+64,Unknown,Not Reported,Day
+65,Freezing Precipitation,Dry,Day
+66,Freezing Precipitation,Other - Explain in Narrative,Day
+67,Rain,Wet,
+68,Unknown,Unknown,
+69,Rain,"Sand, mud, dirt, oil, gravel",Night
+70,Unknown,Ice,Night
+71,Rain,,Night
+72,Unknown,Ice,Day
+73,Rain,Ice,Day
+74,Clear,"Sand, mud, dirt, oil, gravel",Night
+75,Wind,Wet,Day
+76,Clear,,Night
+77,Clear,Wet,
+78,Unknown,Wet,
+79,Freezing Precipitation,"Sand, mud, dirt, oil, gravel",Day
+80,Rain,Dry,Night
+81,Rain,,Day
+82,Rain,Snow,Night
+83,Wind,Snow,Night
+84,Wind,Dry,Day
+85,Unknown,Other - Explain in Narrative,Night
+86,Cloudy,Dry,
+87,Rain,Water (standing / moving),Night
+88,Freezing Precipitation,Dry,Night
+89,Freezing Precipitation,Water (standing / moving),Night
+90,Wind,Slush,Day
+91,Cloudy,Unknown,
+92,Rain,Slush,Night
+93,Clear,,
+94,Clear,Unknown,Night
+95,Unknown,"Sand, mud, dirt, oil, gravel",Night
+96,Unknown,Slush,Day
+97,Cloudy,,Night
+98,Cloudy,Other - Explain in Narrative,Night
+99,Unknown,Snow,Night
+100,Rain,Unknown,Night
+101,Unknown,Dry,
+102,Cloudy,Unknown,Night
+103,Unknown,Ice,
+104,Rain,Snow,Day
+105,Clear,Not Reported,Day
+106,Cloudy,Slush,Night
+107,Unknown,Other - Explain in Narrative,Day
+108,Unknown,Not Reported,Night
+109,Unknown,Not Reported,
+110,Wind,Ice,Night
+111,Freezing Precipitation,Unknown,Day
+112,Freezing Precipitation,Other - Explain in Narrative,Night
+113,Wind,Wet,Night

@@ -1,5 +1,13 @@
 import pandas
 
+def get_date(s):
+    s = s.rsplit("T", maxsplit=1)[0]
+    return s
+
+def get_time(s):
+    s = s.rsplit("T", maxsplit=1)[1]
+    return s
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 print(df)
@@ -24,5 +32,29 @@ df_driver.to_csv("driver.csv")
 
 df_animal = df[['Animal']]
 df_animal.to_csv("animal.csv")
+
+
+
+
+
+df_accident = df[['ACCIDENTDATE']]
+df_accident["date"] = df_accident["ACCIDENTDATE"].apply(get_date)
+print(df_accident)
+
+#df_accident["date"] = df_accident["Dateandtime"].apply(get_date)
+#separates the first segment change index to 1 for second part of string
+"""
+s = "DateTDate2"
+s = s.rsplit("T", maxsplit=1)[0]
+print(s)
+"""
+
+
+
+
+
+
+
+
 
 

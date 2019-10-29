@@ -1,11 +1,11 @@
 ,Impairment,InjuryType
 0,None,Property Damage Only
-10,,
-14,None,Injury
-28,Alcohol,Property Damage Only
-45,Alcohol,Injury
-108,Drugs,Injury
-224,Alcohol,Fatal
-647,None,Fatal
-1805,Alcohol and Drugs,Injury
-1954,Drugs,Fatal
+1,,
+2,None,Injury
+3,Alcohol,Property Damage Only
+4,Alcohol,Injury
+5,Drugs,Injury
+6,Alcohol,Fatal
+7,None,Fatal
+8,Alcohol and Drugs,Injury
+9,Drugs,Fatal
