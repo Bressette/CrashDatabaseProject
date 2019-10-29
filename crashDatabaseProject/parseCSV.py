@@ -19,4 +19,7 @@ df_driver.drop_duplicates(keep='first', inplace=True)
 print(df_driver)
 df_driver.to_csv("driver.csv")
 
+df_animal = df[['Animal']]
+df_animal.to_csv("animal.csv")
+
 #df.to_csv("Empty CSV.csv")

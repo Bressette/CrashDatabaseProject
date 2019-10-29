@@ -4,3 +4,24 @@ fields terminated by ','
 OPTIONALLY ENCLOSED BY '"'
 lines terminated by '\r\n'
 ignore 1 lines;
+
+load data local infile '/home/jbressette6507/driver.csv'
+into table driver
+fields terminated by ','
+OPTIONALLY ENCLOSED BY '"'
+lines terminated by '\r\n'
+ignore 1 lines;
+
+load data local infile '/home/jbressette6507/location.csv'
+into table location
+fields terminated by ','
+OPTIONALLY ENCLOSED BY '"'
+lines terminated by '\r\n'
+ignore 1 lines;
+
+load data local infile '/home/jbressette6507/animal.csv'
+into table animal
+fields terminated by ','
+OPTIONALLY ENCLOSED BY '"'
+lines terminated by '\r\n'
+ignore 1 lines;
