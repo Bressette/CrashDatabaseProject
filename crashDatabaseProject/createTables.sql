@@ -2,7 +2,7 @@ create table location
 (
 	locID bigint(20) primary key not null auto_increment,
 	streetAddress varchar(50) not null,
-	cityID bigint(20) not null,
+	city varchar(20) not null,
 	roadChar enum("Not at a Junction", "Driveway", "Parking Lot", "Five-point or more", "T - Intersection", "Four-way Intersection", "On Ramp", "Traffic circle / roundabout",
 	"Y - Intersection", "Off Ramp")
 );
@@ -37,7 +37,7 @@ create table accident
 	"Opp Direction Sideswipe", "Rear-to-rear", "Right Turn and Thru, Same Direction Sideswipe/Angle Crash", "Left Turn and Thru, Head On", "Right Turn and Thru, Head On"),
 	accDate date not null,
 	accTime time not null,
-	agencyID bigint(20)
+	agency varchar(20)
 );
 
 

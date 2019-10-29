@@ -8,6 +8,12 @@ df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
 print(df_weather)
 df_weather.drop_duplicates(keep=False, inplace=True)
 print(df_weather)
+#df_weather.to_csv("Weather CSV.csv")
 
-df_weather.to_csv("Weather CSV.csv")
-df.to_csv("Empty CSV.csv")
+df_location = df[['STREETADDRESS']]
+df_location.drop_duplicates(keep=False, inplace=True)
+#df_location.to_csv("droppedAddresses.csv")
+
+
+
+#df.to_csv("Empty CSV.csv")
