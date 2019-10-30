@@ -51,8 +51,9 @@ df_driver.to_csv("driver.csv")
 df.index += 1
 df['accID'] = df.index
 df_animal = df[['accID', 'Animal']]
-df_animal = df_animal.dropna(axis=0, subset=['Involving'])
-df_animal.to_csv("animal.csv")
+df_animal = df_animal.dropna(axis=0, subset=['Animal'])
+df_export_animal = df_animal[df_animal.Animal != "None/Other"]
+df_export_animal.to_csv("animal.csv")
 
 
 
@@ -104,8 +105,9 @@ df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisio
 df_export_accident.to_csv("accident.csv")
 
 df_vehicle = df[['accID', 'Involving']]
-df_vehicle = df_vehicle.dropna(axis=0, subset=['Involving'])
-df_vehicle.to_csv("vehicle.csv")
+df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
+df_export = df_export_vehicle.dropna(subset=['Involving'])
+df_export_vehicle.to_csv("vehicle.csv")
 
 
 
