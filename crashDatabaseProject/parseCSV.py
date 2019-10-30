@@ -48,7 +48,7 @@ df_driver['driverID'] = df_driver.index
 print(df_driver)
 df_driver.to_csv("driver.csv")
 
-df.index+=1
+df.index += 1
 df['accID'] = df.index
 df_animal = df[['accID', 'Animal']]
 df_animal.to_csv("animal.csv")
@@ -102,6 +102,8 @@ df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisio
                                         'agency']]
 df_export_accident.to_csv("accident.csv")
 
+df_vehicle = df[['accID', 'Involving']]
+df_vehicle.to_csv("vehicle.csv")
 
 
 
