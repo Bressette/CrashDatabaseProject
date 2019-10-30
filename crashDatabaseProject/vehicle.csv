@@ -1,0 +1,829 @@
+,accID,Involving
+42,42,Heavy Truck
+49,49,Heavy Truck
+57,57,Bicycle
+61,61,Heavy Truck
+93,93,Pedestrian
+129,129,Bicycle
+137,137,Motorcycle
+145,145,Heavy Truck
+180,180,Motorcycle
+200,200,Pedestrian
+214,214,Heavy Truck
+252,252,Heavy Truck
+265,265,Heavy Truck
+281,281,Heavy Truck
+284,284,Motorcycle
+298,298,Heavy Truck
+315,315,Motorcycle
+316,316,Motorcycle
+317,317,Heavy Truck
+319,319,Pedestrian
+347,347,Heavy Truck
+368,368,Heavy Truck
+380,380,Motorcycle
+389,389,Pedestrian
+390,390,Heavy Truck
+391,391,Heavy Truck
+393,393,Motorcycle
+395,395,Heavy Truck
+397,397,Heavy Truck
+409,409,Heavy Truck
+413,413,Heavy Truck
+451,451,Bicycle
+464,464,Motorcycle
+507,507,Motorcycle
+510,510,Heavy Truck
+521,521,Heavy Truck
+536,536,Heavy Truck
+544,544,Motorcycle
+548,548,Heavy Truck
+565,565,Heavy Truck
+585,585,Heavy Truck
+600,600,Pedestrian
+628,628,Pedestrian
+638,638,Motorcycle
+643,643,Heavy Truck
+651,651,Heavy Truck
+705,705,Heavy Truck
+706,706,Heavy Truck
+757,757,Bicycle
+767,767,Motorcycle
+780,780,Bicycle
+786,786,Bicycle
+787,787,Pedestrian
+789,789,Motorcycle
+802,802,Heavy Truck
+809,809,Heavy Truck
+826,826,Motorcycle
+831,831,Heavy Truck
+850,850,Heavy Truck
+851,851,Heavy Truck
+890,890,Motorcycle
+897,897,Pedestrian
+941,941,Heavy Truck
+949,949,Heavy Truck
+962,962,Pedestrian
+987,987,Heavy Truck
+1013,1013,Pedestrian
+1016,1016,Motorcycle
+1017,1017,Motorcycle
+1084,1084,Heavy Truck
+1095,1095,Heavy Truck
+1111,1111,Pedestrian
+1132,1132,Heavy Truck
+1141,1141,Heavy Truck
+1173,1173,Heavy Truck
+1174,1174,Heavy Truck
+1205,1205,Heavy Truck
+1208,1208,Heavy Truck
+1244,1244,Heavy Truck
+1246,1246,Heavy Truck
+1250,1250,Heavy Truck
+1298,1298,Bicycle
+1302,1302,Heavy Truck
+1327,1327,Heavy Truck
+1348,1348,Motorcycle
+1349,1349,Motorcycle
+1389,1389,Bicycle
+1396,1396,Heavy Truck
+1412,1412,Pedestrian
+1431,1431,Pedestrian
+1445,1445,Heavy Truck
+1446,1446,Heavy Truck
+1464,1464,Heavy Truck
+1518,1518,Heavy Truck
+1540,1540,Heavy Truck
+1574,1574,Heavy Truck
+1598,1598,Motorcycle
+1602,1602,Bicycle
+1615,1615,Heavy Truck
+1616,1616,Bicycle
+1634,1634,Heavy Truck
+1658,1658,Bicycle
+1673,1673,Pedestrian
+1711,1711,Heavy Truck
+1722,1722,Heavy Truck
+1755,1755,Motorcycle
+1760,1760,Motorcycle
+1766,1766,Motorcycle
+1835,1835,Heavy Truck
+1837,1837,Heavy Truck
+1844,1844,Motorcycle
+1863,1863,Pedestrian
+1867,1867,Heavy Truck
+1914,1914,Heavy Truck
+1921,1921,Bicycle
+1946,1946,Heavy Truck
+1976,1976,Heavy Truck
+1999,1999,Heavy Truck
+2001,2001,Heavy Truck
+2017,2017,Motorcycle
+2028,2028,Motorcycle
+2059,2059,Heavy Truck
+2063,2063,Motorcycle
+2093,2093,Heavy Truck
+2101,2101,Motorcycle
+2109,2109,Pedestrian
+2122,2122,Motorcycle
+2129,2129,Heavy Truck
+2180,2180,Motorcycle
+2185,2185,Bicycle
+2203,2203,Pedestrian
+2210,2210,Heavy Truck
+2227,2227,Pedestrian
+2249,2249,Heavy Truck
+2250,2250,Heavy Truck
+2269,2269,Heavy Truck
+2277,2277,Heavy Truck
+2295,2295,Motorcycle
+2305,2305,Motorcycle
+2307,2307,Heavy Truck
+2370,2370,Motorcycle
+2373,2373,Motorcycle
+2376,2376,Pedestrian
+2383,2383,Heavy Truck
+2385,2385,Heavy Truck
+2388,2388,Heavy Truck
+2399,2399,Pedestrian
+2412,2412,Pedestrian
+2418,2418,Heavy Truck
+2451,2451,Heavy Truck
+2462,2462,Heavy Truck
+2495,2495,Motorcycle
+2527,2527,Heavy Truck
+2532,2532,Heavy Truck
+2540,2540,Heavy Truck
+2563,2563,Heavy Truck
+2580,2580,Heavy Truck
+2628,2628,Heavy Truck
+2654,2654,Heavy Truck
+2669,2669,Heavy Truck
+2678,2678,Heavy Truck
+2693,2693,Heavy Truck
+2731,2731,Motorcycle
+2733,2733,Heavy Truck
+2743,2743,Pedestrian
+2770,2770,Pedestrian
+2777,2777,Bicycle
+2795,2795,Motorcycle
+2797,2797,Heavy Truck
+2799,2799,Heavy Truck
+2800,2800,Motorcycle
+2824,2824,Motorcycle
+2837,2837,Pedestrian
+2876,2876,Motorcycle
+2886,2886,Heavy Truck
+2903,2903,Motorcycle
+2932,2932,Motorcycle
+2933,2933,Motorcycle
+2961,2961,Heavy Truck
+2970,2970,Heavy Truck
+3005,3005,Heavy Truck
+3012,3012,Pedestrian
+3029,3029,Heavy Truck
+3039,3039,Heavy Truck
+3042,3042,Heavy Truck
+3051,3051,Heavy Truck
+3067,3067,Pedestrian
+3128,3128,Motorcycle
+3138,3138,Pedestrian
+3144,3144,Motorcycle
+3170,3170,Heavy Truck
+3172,3172,Heavy Truck
+3174,3174,Heavy Truck
+3185,3185,Heavy Truck
+3192,3192,Bicycle
+3194,3194,Bicycle
+3206,3206,Heavy Truck
+3249,3249,Motorcycle
+3254,3254,Motorcycle
+3286,3286,Heavy Truck
+3296,3296,Motorcycle
+3321,3321,Motorcycle
+3324,3324,Heavy Truck
+3362,3362,Heavy Truck
+3376,3376,Motorcycle
+3381,3381,Bicycle
+3387,3387,Heavy Truck
+3389,3389,Bicycle
+3392,3392,Motorcycle
+3404,3404,Heavy Truck
+3405,3405,Heavy Truck
+3411,3411,Heavy Truck
+3434,3434,Heavy Truck
+3441,3441,Heavy Truck
+3443,3443,Heavy Truck
+3472,3472,Heavy Truck
+3503,3503,Bicycle
+3512,3512,Heavy Truck
+3529,3529,Pedestrian
+3532,3532,Heavy Truck
+3540,3540,Heavy Truck
+3559,3559,Pedestrian
+3582,3582,Pedestrian
+3620,3620,Heavy Truck
+3649,3649,Bicycle
+3663,3663,Heavy Truck
+3689,3689,Heavy Truck
+3718,3718,Heavy Truck
+3760,3760,Motorcycle
+3767,3767,Heavy Truck
+3768,3768,Bicycle
+3779,3779,Pedestrian
+3851,3851,Heavy Truck
+3893,3893,Motorcycle
+3926,3926,Motorcycle
+3930,3930,Bicycle
+3941,3941,Motorcycle
+3960,3960,Heavy Truck
+3972,3972,Heavy Truck
+3983,3983,Pedestrian
+4022,4022,Bicycle
+4089,4089,Bicycle
+4095,4095,Pedestrian
+4121,4121,Pedestrian
+4160,4160,Heavy Truck
+4211,4211,Motorcycle
+4249,4249,Heavy Truck
+4268,4268,Pedestrian
+4280,4280,Motorcycle
+4317,4317,Heavy Truck
+4333,4333,Bicycle
+4336,4336,Heavy Truck
+4418,4418,Bicycle
+4421,4421,Motorcycle
+4427,4427,Motorcycle
+4428,4428,Bicycle
+4460,4460,Pedestrian
+4483,4483,Heavy Truck
+4507,4507,Bicycle
+4512,4512,Heavy Truck
+4513,4513,Motorcycle
+4581,4581,Heavy Truck
+4611,4611,Heavy Truck
+4613,4613,Heavy Truck
+4616,4616,Heavy Truck
+4633,4633,Heavy Truck
+4657,4657,Heavy Truck
+4673,4673,Pedestrian
+4691,4691,Pedestrian
+4695,4695,Heavy Truck
+4716,4716,Pedestrian
+4717,4717,Bicycle
+4815,4815,Heavy Truck
+4825,4825,Heavy Truck
+4826,4826,Heavy Truck
+4829,4829,Bicycle
+4836,4836,Heavy Truck
+4869,4869,Heavy Truck
+4881,4881,Bicycle
+4883,4883,Motorcycle
+4893,4893,Motorcycle
+4916,4916,Heavy Truck
+4924,4924,Heavy Truck
+4928,4928,Motorcycle
+4961,4961,Heavy Truck
+4983,4983,Pedestrian
+4990,4990,Pedestrian
+4995,4995,Pedestrian
+4996,4996,Heavy Truck
+5003,5003,Heavy Truck
+5019,5019,Heavy Truck
+5026,5026,Motorcycle
+5031,5031,Pedestrian
+5033,5033,Heavy Truck
+5046,5046,Heavy Truck
+5049,5049,Pedestrian
+5073,5073,Motorcycle
+5077,5077,Motorcycle
+5084,5084,Motorcycle
+5087,5087,Heavy Truck
+5101,5101,Heavy Truck
+5151,5151,Motorcycle
+5191,5191,Bicycle
+5192,5192,Motorcycle
+5194,5194,Pedestrian
+5196,5196,Motorcycle
+5200,5200,Bicycle
+5219,5219,Pedestrian
+5228,5228,Pedestrian
+5251,5251,Pedestrian
+5275,5275,Heavy Truck
+5282,5282,Bicycle
+5316,5316,Motorcycle
+5361,5361,Heavy Truck
+5374,5374,Pedestrian
+5395,5395,Heavy Truck
+5401,5401,Heavy Truck
+5410,5410,Heavy Truck
+5445,5445,Bicycle
+5446,5446,Bicycle
+5447,5447,Bicycle
+5460,5460,Heavy Truck
+5465,5465,Bicycle
+5476,5476,Heavy Truck
+5496,5496,Heavy Truck
+5506,5506,Bicycle
+5515,5515,Heavy Truck
+5529,5529,Motorcycle
+5539,5539,Heavy Truck
+5559,5559,Pedestrian
+5563,5563,Heavy Truck
+5575,5575,Heavy Truck
+5580,5580,Heavy Truck
+5602,5602,Heavy Truck
+5634,5634,Pedestrian
+5660,5660,Motorcycle
+5689,5689,Heavy Truck
+5694,5694,Pedestrian
+5695,5695,Pedestrian
+5721,5721,Pedestrian
+5727,5727,Motorcycle
+5737,5737,Heavy Truck
+5746,5746,Bicycle
+5747,5747,Heavy Truck
+5791,5791,Heavy Truck
+5808,5808,Motorcycle
+5824,5824,Heavy Truck
+5858,5858,Pedestrian
+5859,5859,Heavy Truck
+5864,5864,Heavy Truck
+5943,5943,Heavy Truck
+5947,5947,Heavy Truck
+5950,5950,Bicycle
+5973,5973,Motorcycle
+5979,5979,Bicycle
+5982,5982,Heavy Truck
+5997,5997,Motorcycle
+6019,6019,Heavy Truck
+6032,6032,Heavy Truck
+6052,6052,Motorcycle
+6121,6121,Motorcycle
+6127,6127,Pedestrian
+6129,6129,Heavy Truck
+6138,6138,Pedestrian
+6162,6162,Heavy Truck
+6163,6163,Heavy Truck
+6184,6184,Heavy Truck
+6220,6220,Motorcycle
+6254,6254,Motorcycle
+6255,6255,Heavy Truck
+6256,6256,Heavy Truck
+6262,6262,Motorcycle
+6295,6295,Heavy Truck
+6313,6313,Heavy Truck
+6315,6315,Heavy Truck
+6325,6325,Pedestrian
+6370,6370,Pedestrian
+6404,6404,Pedestrian
+6405,6405,Heavy Truck
+6408,6408,Heavy Truck
+6426,6426,Heavy Truck
+6433,6433,Heavy Truck
+6444,6444,Heavy Truck
+6504,6504,Heavy Truck
+6509,6509,Heavy Truck
+6514,6514,Motorcycle
+6519,6519,Motorcycle
+6525,6525,Pedestrian
+6527,6527,Motorcycle
+6535,6535,Heavy Truck
+6563,6563,Heavy Truck
+6568,6568,Pedestrian
+6576,6576,Heavy Truck
+6599,6599,Heavy Truck
+6612,6612,Heavy Truck
+6619,6619,Heavy Truck
+6645,6645,Pedestrian
+6652,6652,Heavy Truck
+6676,6676,Motorcycle
+6685,6685,Bicycle
+6688,6688,Heavy Truck
+6691,6691,Heavy Truck
+6699,6699,Heavy Truck
+6702,6702,Heavy Truck
+6704,6704,Heavy Truck
+6717,6717,Motorcycle
+6718,6718,Motorcycle
+6720,6720,Motorcycle
+6725,6725,Pedestrian
+6730,6730,Motorcycle
+6739,6739,Pedestrian
+6773,6773,Heavy Truck
+6776,6776,Heavy Truck
+6830,6830,Heavy Truck
+6845,6845,Bicycle
+6884,6884,Pedestrian
+6895,6895,Heavy Truck
+6905,6905,Heavy Truck
+6930,6930,Motorcycle
+6973,6973,Heavy Truck
+6980,6980,Motorcycle
+6986,6986,Motorcycle
+6988,6988,Heavy Truck
+7016,7016,Bicycle
+7127,7127,Heavy Truck
+7133,7133,Pedestrian
+7139,7139,Motorcycle
+7150,7150,Heavy Truck
+7204,7204,Pedestrian
+7209,7209,Heavy Truck
+7275,7275,Bicycle
+7280,7280,Heavy Truck
+7313,7313,Bicycle
+7317,7317,Pedestrian
+7323,7323,Pedestrian
+7349,7349,Heavy Truck
+7350,7350,Motorcycle
+7353,7353,Pedestrian
+7385,7385,Bicycle
+7395,7395,Motorcycle
+7396,7396,Pedestrian
+7404,7404,Heavy Truck
+7409,7409,Heavy Truck
+7429,7429,Motorcycle
+7439,7439,Heavy Truck
+7483,7483,Heavy Truck
+7494,7494,Heavy Truck
+7498,7498,Pedestrian
+7521,7521,Pedestrian
+7522,7522,Heavy Truck
+7523,7523,Bicycle
+7528,7528,Heavy Truck
+7532,7532,Pedestrian
+7537,7537,Bicycle
+7542,7542,Heavy Truck
+7550,7550,Heavy Truck
+7559,7559,Heavy Truck
+7573,7573,Heavy Truck
+7576,7576,Motorcycle
+7591,7591,Heavy Truck
+7595,7595,Motorcycle
+7610,7610,Heavy Truck
+7611,7611,Heavy Truck
+7619,7619,Heavy Truck
+7627,7627,Heavy Truck
+7634,7634,Bicycle
+7638,7638,Motorcycle
+7673,7673,Heavy Truck
+7687,7687,Pedestrian
+7708,7708,Heavy Truck
+7727,7727,Heavy Truck
+7737,7737,Heavy Truck
+7743,7743,Pedestrian
+7749,7749,Pedestrian
+7753,7753,Heavy Truck
+7795,7795,Pedestrian
+7879,7879,Pedestrian
+7881,7881,Heavy Truck
+7900,7900,Pedestrian
+7905,7905,Motorcycle
+7915,7915,Motorcycle
+7918,7918,Heavy Truck
+7922,7922,Heavy Truck
+7953,7953,Pedestrian
+7955,7955,Heavy Truck
+7960,7960,Heavy Truck
+7965,7965,Motorcycle
+8001,8001,Motorcycle
+8020,8020,Motorcycle
+8060,8060,Heavy Truck
+8067,8067,Heavy Truck
+8069,8069,Bicycle
+8089,8089,Heavy Truck
+8112,8112,Motorcycle
+8114,8114,Motorcycle
+8124,8124,Heavy Truck
+8143,8143,Motorcycle
+8154,8154,Heavy Truck
+8164,8164,Heavy Truck
+8179,8179,Heavy Truck
+8185,8185,Heavy Truck
+8189,8189,Heavy Truck
+8195,8195,Heavy Truck
+8200,8200,Heavy Truck
+8208,8208,Bicycle
+8219,8219,Pedestrian
+8234,8234,Heavy Truck
+8241,8241,Bicycle
+8245,8245,Heavy Truck
+8271,8271,Heavy Truck
+8274,8274,Heavy Truck
+8276,8276,Heavy Truck
+8280,8280,Motorcycle
+8284,8284,Pedestrian
+8285,8285,Motorcycle
+8294,8294,Heavy Truck
+8303,8303,Heavy Truck
+8330,8330,Motorcycle
+8334,8334,Heavy Truck
+8335,8335,Bicycle
+8338,8338,Motorcycle
+8343,8343,Motorcycle
+8344,8344,Pedestrian
+8346,8346,Heavy Truck
+8371,8371,Motorcycle
+8376,8376,Heavy Truck
+8388,8388,Pedestrian
+8402,8402,Heavy Truck
+8431,8431,Pedestrian
+8441,8441,Heavy Truck
+8494,8494,Heavy Truck
+8496,8496,Heavy Truck
+8540,8540,Heavy Truck
+8546,8546,Heavy Truck
+8550,8550,Heavy Truck
+8595,8595,Heavy Truck
+8615,8615,Pedestrian
+8622,8622,Heavy Truck
+8630,8630,Pedestrian
+8640,8640,Heavy Truck
+8653,8653,Heavy Truck
+8661,8661,Bicycle
+8692,8692,Pedestrian
+8703,8703,Heavy Truck
+8747,8747,Heavy Truck
+8773,8773,Bicycle
+8777,8777,Pedestrian
+8783,8783,Heavy Truck
+8785,8785,Bicycle
+8799,8799,Heavy Truck
+8802,8802,Pedestrian
+8809,8809,Pedestrian
+8817,8817,Heavy Truck
+8827,8827,Heavy Truck
+8834,8834,Heavy Truck
+8838,8838,Heavy Truck
+8853,8853,Heavy Truck
+8855,8855,Motorcycle
+8857,8857,Motorcycle
+8859,8859,Heavy Truck
+8873,8873,Motorcycle
+8878,8878,Motorcycle
+8887,8887,Heavy Truck
+8897,8897,Motorcycle
+8915,8915,Heavy Truck
+8933,8933,Motorcycle
+8943,8943,Heavy Truck
+8958,8958,Heavy Truck
+8967,8967,Motorcycle
+8986,8986,Heavy Truck
+9002,9002,Pedestrian
+9015,9015,Heavy Truck
+9024,9024,Pedestrian
+9036,9036,Heavy Truck
+9047,9047,Heavy Truck
+9049,9049,Heavy Truck
+9078,9078,Motorcycle
+9096,9096,Heavy Truck
+9110,9110,Heavy Truck
+9119,9119,Motorcycle
+9122,9122,Motorcycle
+9127,9127,Motorcycle
+9144,9144,Motorcycle
+9149,9149,Heavy Truck
+9162,9162,Pedestrian
+9176,9176,Bicycle
+9208,9208,Heavy Truck
+9236,9236,Bicycle
+9237,9237,Heavy Truck
+9239,9239,Heavy Truck
+9324,9324,Motorcycle
+9370,9370,Motorcycle
+9380,9380,Heavy Truck
+9394,9394,Heavy Truck
+9398,9398,Heavy Truck
+9401,9401,Bicycle
+9404,9404,Heavy Truck
+9411,9411,Heavy Truck
+9415,9415,Heavy Truck
+9416,9416,Pedestrian
+9433,9433,Motorcycle
+9436,9436,Heavy Truck
+9443,9443,Heavy Truck
+9473,9473,Heavy Truck
+9502,9502,Heavy Truck
+9506,9506,Motorcycle
+9513,9513,Heavy Truck
+9528,9528,Heavy Truck
+9563,9563,Motorcycle
+9570,9570,Bicycle
+9582,9582,Motorcycle
+9591,9591,Pedestrian
+9614,9614,Heavy Truck
+9623,9623,Heavy Truck
+9648,9648,Motorcycle
+9651,9651,Motorcycle
+9659,9659,Motorcycle
+9660,9660,Heavy Truck
+9664,9664,Bicycle
+9669,9669,Motorcycle
+9730,9730,Heavy Truck
+9740,9740,Motorcycle
+9749,9749,Bicycle
+9760,9760,Heavy Truck
+9775,9775,Heavy Truck
+9783,9783,Heavy Truck
+9784,9784,Heavy Truck
+9830,9830,Heavy Truck
+9840,9840,Motorcycle
+9844,9844,Motorcycle
+9853,9853,Heavy Truck
+9890,9890,Bicycle
+9900,9900,Heavy Truck
+9905,9905,Motorcycle
+9927,9927,Heavy Truck
+9943,9943,Heavy Truck
+9950,9950,Motorcycle
+10049,10049,Heavy Truck
+10082,10082,Heavy Truck
+10088,10088,Heavy Truck
+10090,10090,Bicycle
+10134,10134,Heavy Truck
+10139,10139,Heavy Truck
+10141,10141,Heavy Truck
+10146,10146,Heavy Truck
+10147,10147,Pedestrian
+10151,10151,Motorcycle
+10155,10155,Bicycle
+10158,10158,Motorcycle
+10173,10173,Motorcycle
+10174,10174,Pedestrian
+10193,10193,Heavy Truck
+10199,10199,Heavy Truck
+10208,10208,Heavy Truck
+10233,10233,Bicycle
+10269,10269,Heavy Truck
+10276,10276,Heavy Truck
+10282,10282,Pedestrian
+10291,10291,Bicycle
+10301,10301,Pedestrian
+10308,10308,Heavy Truck
+10309,10309,Pedestrian
+10315,10315,Bicycle
+10316,10316,Heavy Truck
+10332,10332,Pedestrian
+10338,10338,Heavy Truck
+10348,10348,Heavy Truck
+10353,10353,Heavy Truck
+10378,10378,Heavy Truck
+10399,10399,Motorcycle
+10408,10408,Heavy Truck
+10414,10414,Motorcycle
+10419,10419,Heavy Truck
+10429,10429,Heavy Truck
+10440,10440,Heavy Truck
+10456,10456,Motorcycle
+10467,10467,Bicycle
+10470,10470,Heavy Truck
+10493,10493,Heavy Truck
+10514,10514,Heavy Truck
+10530,10530,Heavy Truck
+10531,10531,Heavy Truck
+10532,10532,Heavy Truck
+10535,10535,Motorcycle
+10612,10612,Heavy Truck
+10647,10647,Heavy Truck
+10657,10657,Motorcycle
+10709,10709,Heavy Truck
+10734,10734,Motorcycle
+10778,10778,Heavy Truck
+10800,10800,Heavy Truck
+10839,10839,Bicycle
+10841,10841,Heavy Truck
+10843,10843,Motorcycle
+10849,10849,Motorcycle
+10850,10850,Motorcycle
+10889,10889,Heavy Truck
+10893,10893,Heavy Truck
+10917,10917,Pedestrian
+10929,10929,Motorcycle
+10937,10937,Motorcycle
+10945,10945,Motorcycle
+10952,10952,Heavy Truck
+10985,10985,Heavy Truck
+10989,10989,Motorcycle
+10993,10993,Motorcycle
+11007,11007,Bicycle
+11008,11008,Motorcycle
+11012,11012,Heavy Truck
+11013,11013,Heavy Truck
+11063,11063,Pedestrian
+11101,11101,Heavy Truck
+11110,11110,Heavy Truck
+11111,11111,Pedestrian
+11121,11121,Pedestrian
+11150,11150,Pedestrian
+11153,11153,Heavy Truck
+11163,11163,Motorcycle
+11178,11178,Bicycle
+11180,11180,Heavy Truck
+11183,11183,Pedestrian
+11192,11192,Heavy Truck
+11200,11200,Heavy Truck
+11210,11210,Heavy Truck
+11222,11222,Heavy Truck
+11278,11278,Heavy Truck
+11329,11329,Heavy Truck
+11340,11340,Heavy Truck
+11363,11363,Motorcycle
+11365,11365,Heavy Truck
+11369,11369,Pedestrian
+11383,11383,Pedestrian
+11393,11393,Pedestrian
+11397,11397,Heavy Truck
+11409,11409,Heavy Truck
+11417,11417,Pedestrian
+11440,11440,Bicycle
+11447,11447,Bicycle
+11465,11465,Heavy Truck
+11477,11477,Motorcycle
+11495,11495,Heavy Truck
+11506,11506,Heavy Truck
+11509,11509,Bicycle
+11524,11524,Heavy Truck
+11554,11554,Motorcycle
+11560,11560,Heavy Truck
+11585,11585,Heavy Truck
+11622,11622,Heavy Truck
+11631,11631,Pedestrian
+11641,11641,Pedestrian
+11642,11642,Motorcycle
+11652,11652,Heavy Truck
+11673,11673,Heavy Truck
+11679,11679,Heavy Truck
+11683,11683,Heavy Truck
+11684,11684,Heavy Truck
+11694,11694,Motorcycle
+11695,11695,Motorcycle
+11701,11701,Motorcycle
+11720,11720,Motorcycle
+11730,11730,Bicycle
+11735,11735,Heavy Truck
+11768,11768,Motorcycle
+11773,11773,Heavy Truck
+11774,11774,Motorcycle
+11776,11776,Pedestrian
+11777,11777,Motorcycle
+11779,11779,Heavy Truck
+11781,11781,Motorcycle
+11788,11788,Motorcycle
+11820,11820,Bicycle
+11836,11836,Heavy Truck
+11839,11839,Pedestrian
+11849,11849,Heavy Truck
+11855,11855,Motorcycle
+11871,11871,Heavy Truck
+11885,11885,Heavy Truck
+11913,11913,Bicycle
+11914,11914,Heavy Truck
+11916,11916,Heavy Truck
+11926,11926,Heavy Truck
+11945,11945,Pedestrian
+11974,11974,Bicycle
+11982,11982,Heavy Truck
+11996,11996,Pedestrian
+12016,12016,Bicycle
+12022,12022,Heavy Truck
+12031,12031,Heavy Truck
+12054,12054,Motorcycle
+12102,12102,Heavy Truck
+12103,12103,Heavy Truck
+12106,12106,Motorcycle
+12108,12108,Motorcycle
+12111,12111,Heavy Truck
+12140,12140,Pedestrian
+12142,12142,Heavy Truck
+12188,12188,Bicycle
+12198,12198,Heavy Truck
+12238,12238,Bicycle
+12243,12243,Heavy Truck
+12244,12244,Pedestrian
+12278,12278,Heavy Truck
+12284,12284,Heavy Truck
+12285,12285,Heavy Truck
+12286,12286,Bicycle
+12296,12296,Bicycle
+12298,12298,Motorcycle
+12305,12305,Motorcycle
+12310,12310,Heavy Truck
+12314,12314,Pedestrian
+12315,12315,Heavy Truck
+12322,12322,Motorcycle
+12328,12328,Motorcycle
+12330,12330,Heavy Truck
+12350,12350,Heavy Truck
+12356,12356,Heavy Truck
+12376,12376,Motorcycle
+12387,12387,Motorcycle
+12407,12407,Heavy Truck
+12411,12411,Heavy Truck
+12416,12416,Motorcycle
+12420,12420,Motorcycle
+12430,12430,Heavy Truck
+12449,12449,Motorcycle
+12462,12462,Heavy Truck
+12465,12465,Heavy Truck
+12470,12470,Heavy Truck
+12474,12474,Pedestrian
