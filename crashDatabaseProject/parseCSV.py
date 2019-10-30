@@ -13,11 +13,6 @@ def get_time(s):
     return s
 
 
-def get_loc_id(df, df_location, df_accident):
-    merged = pandas.merge(df, df_location, on=['STREETADDRESS'], how='inner')
-    merged.head()
-    return df_accident
-
 
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
@@ -48,7 +43,7 @@ df_driver['driverID'] = df_driver.index
 print(df_driver)
 df_driver.to_csv("driver.csv")
 
-df.index += 1
+
 df['accID'] = df.index
 df_animal = df[['accID', 'Animal']]
 df_animal = df_animal.dropna(axis=0, subset=['Animal'])
@@ -60,6 +55,7 @@ df_export_animal.to_csv("animal.csv")
 #creates new columns to store separated date and time
 df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
 df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
+
 print(df_accident)
 
 df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
@@ -74,7 +70,7 @@ df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'Report
 df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
 print(df_final_accident)
-#df_final_accident.to_csv("accident.csv")
+
 
 print("Printing Merged")
 mergedLocation = pandas.merge(df, df_location, how='left', left_on=['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics'],
@@ -107,6 +103,12 @@ df_vehicle = df[['accID', 'Involving']]
 df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
 df_export_vehicle = df_export_vehicle.dropna(subset=['Involving'])
 df_export_vehicle.to_csv("vehicle.csv")
+
+
+
+
+
+
 
 
 
