@@ -105,7 +105,7 @@ df_export_accident.to_csv("accident.csv")
 
 df_vehicle = df[['accID', 'Involving']]
 df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
-df_export = df_export_vehicle.dropna(subset=['Involving'])
+df_export_vehicle = df_export_vehicle.dropna(subset=['Involving'])
 df_export_vehicle.to_csv("vehicle.csv")
 
 
