@@ -57,7 +57,6 @@ df_export_animal.to_csv("animal.csv")
 
 
 
-
 #creates new columns to store separated date and time
 df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
 df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)

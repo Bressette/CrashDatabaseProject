@@ -46,7 +46,7 @@ create table accident
 create table animal
 (
 	accID bigint(20) not null,
-	animalType enum("Deer", "Moose", "Wild") not null,
+	animalType enum("Deer", "Moose", "Wild", "Domestic") not null,
 	foreign key(accID) references accident(accID),
 	primary key(accID, animalType)
 	
