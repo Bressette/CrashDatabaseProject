@@ -48,7 +48,9 @@ df_driver['driverID'] = df_driver.index
 print(df_driver)
 df_driver.to_csv("driver.csv")
 
-df_animal = df[['Animal']]
+df.index+=1
+df['accID'] = df.index
+df_animal = df[['accID', 'Animal']]
 df_animal.to_csv("animal.csv")
 
 
@@ -96,8 +98,9 @@ df_final_accident['locID'] = mergedLocation[['locID']]
 print("Printing final accident")
 print(df_final_accident)
 print(list(df_final_accident))
-pandas.to_datetime(df_final_accident['accDate'])
-df_final_accident.to_csv("accident.csv")
+df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+                                        'agency']]
+df_export_accident.to_csv("accident.csv")
 
 
 
