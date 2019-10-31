@@ -9,7 +9,7 @@ def get_date(s):
 
 def get_time(s):
     s = s.rsplit("T", maxsplit=1)[1]
-    s = s.replace("Z", "")
+    s = s.rsplit(".", maxsplit=1)[0]
     return s
 
 
@@ -59,6 +59,7 @@ df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
 print(df_accident)
 
 df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
+df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
 print(df_accident)
 
 df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
