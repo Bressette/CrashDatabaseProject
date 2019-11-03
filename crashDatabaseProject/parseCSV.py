@@ -12,36 +12,41 @@ def get_time(s):
     s = s.rsplit(".", maxsplit=1)[0]
     return s
 
+def export_weather(df):
+    df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
+    df_weather.drop_duplicates(keep='first', inplace=True)
+    df_weather.reset_index(inplace=True, drop=True)
+    df_weather.index += 1
+    df_weather['condID'] = df_weather.index;
+    df_weather.to_csv("Weather CSV.csv")
+    return df_weather
 
+def export_location(df):
+    df_location = df[['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics']]
+    df_location.drop_duplicates(keep='first', inplace=True)
+    df_location.reset_index(inplace=True, drop=True)
+    df_location.index += 1
+    df_location['locID'] = df_location.index;
+    df_location.to_csv("location.csv")
+    return df_location
+
+def export_driver(df):
+    df_driver = df[['Impairment', 'InjuryType']]
+    df_driver.drop_duplicates(keep='first', inplace=True)
+    df_driver.reset_index(inplace=True, drop=True)
+    df_driver.index += 1
+    df_driver['driverID'] = df_driver.index
+    df_driver.to_csv("driver.csv")
+    return df_driver
 
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
-print(df)
-print(list(df))
 
-df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
-print(df_weather)
-df_weather.drop_duplicates(keep='first', inplace=True)
-df_weather.reset_index(inplace=True, drop=True)
-df_weather.index += 1
-df_weather['condID'] = df_weather.index;
-print(df_weather)
-df_weather.to_csv("Weather CSV.csv")
 
-df_location = df[['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics']]
-df_location.drop_duplicates(keep='first', inplace=True)
-df_location.reset_index(inplace=True, drop=True)
-df_location.index += 1
-df_location['locID'] = df_location.index;
-df_location.to_csv("location.csv")
+df_weather = export_weather(df)
+df_location = export_location(df)
+df_driver = export_driver(df)
 
-df_driver = df[['Impairment', 'InjuryType']]
-df_driver.drop_duplicates(keep='first', inplace=True)
-df_driver.reset_index(inplace=True, drop=True)
-df_driver.index += 1
-df_driver['driverID'] = df_driver.index
-print(df_driver)
-df_driver.to_csv("driver.csv")
 
 
 df['accID'] = df.index
@@ -56,46 +61,37 @@ df_export_animal.to_csv("animal.csv")
 df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
 df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
 
-print(df_accident)
+
 
 df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
 df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
-print(df_accident)
+
 
 df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
 
-print(df_accident)
-print(list(df_accident))
+
 
 df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
 df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
-print(df_final_accident)
 
 
-print("Printing Merged")
+
+
 mergedLocation = pandas.merge(df, df_location, how='left', left_on=['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics'],
                       right_on=['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics'])
-print(mergedLocation)
-print(list(mergedLocation))
+
 
 mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
                              right_on=['Weather', 'SurfaceCondition', 'DayNight'])
-print(mergedWeather)
-print(list(mergedWeather))
 
 mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
                             right_on=['Impairment', 'InjuryType'])
 
-print(mergedDriver)
-print(list(mergedDriver))
 
 df_final_accident['driverID'] = mergedDriver['driverID']
 df_final_accident['condID'] = mergedWeather[['condID']]
 df_final_accident['locID'] = mergedLocation[['locID']]
-print("Printing final accident")
-print(df_final_accident)
-print(list(df_final_accident))
 df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
 df_export_accident.to_csv("accident.csv")
