@@ -4,7 +4,7 @@ A database that holds data about crashes in vermont in 2016. The database is use
 to generate statistics from the dataset that could be used to identify patterns and
 relationships between variables.
 
-##Technologies
+## Technologies
 
 The raw data that is stored in a CSV is sanitized using the Pandas library in Python
 and separate CSV files are generated for each table in the database design. The generated
