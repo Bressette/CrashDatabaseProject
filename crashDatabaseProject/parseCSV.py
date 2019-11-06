@@ -31,7 +31,6 @@ def export_location(df):
     df_location.reset_index(inplace=True, drop=True)
     df_location.index += 1
     df_location['locID'] = df_location.index;
-    df_location.to_csv("location.csv")
     return df_location
 
 #function that declares a dataframe driver drops duplicates and creates new column
@@ -72,6 +71,9 @@ df_animal = export_animal(df)
 df_vehicle = export_vehicle(df)
 
 
+
+
+
 #create dataframe to store data for accident
 df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
 
@@ -110,9 +112,19 @@ df_final_accident['condID'] = mergedWeather[['condID']]
 df_final_accident['locID'] = mergedLocation[['locID']]
 df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
-df_export_accident.to_csv("accident.csv")
+df_export_accident.index += 1
+df_export_accident['accID'] = df_export_accident.index
+df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+                                        'agency']]
+df_export_accident.to_csv("accident.csv", index=False)
 
 
+df_city = df_location[['locID', 'CITYORTOWN']]
+df_location.drop(['CITYORTOWN'], axis=1, inplace=True)
+df_location = df_location.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
+df_location = df_location[["locID", "streetAddress", "roadChar"]]
+df_location.to_csv("location.csv", index=False)
+df_city.to_csv("city.csv", index=False)
 
 
 
