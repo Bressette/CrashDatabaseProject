@@ -33,6 +33,7 @@ def export_location(df):
     df_location['locID'] = df_location.index;
     return df_location
 
+
 #function that declares a dataframe driver drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as driverID for a primary key column
 def export_driver(df):
@@ -41,6 +42,8 @@ def export_driver(df):
     df_driver.reset_index(inplace=True, drop=True)
     df_driver.index += 1
     df_driver['driverID'] = df_driver.index
+    df_driver['Impairment'].fillna("None", inplace=True)
+    df_driver = df_driver.dropna(axis=0, subset=['InjuryType'])
     df_driver.to_csv("driver.csv", index=False)
     return df_driver
 
@@ -116,6 +119,7 @@ df_export_accident.index += 1
 df_export_accident['accID'] = df_export_accident.index
 df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
+df_export_accident['collisionDir'].fillna("Unkown", inplace=True)
 df_export_accident.to_csv("accident.csv", index=False)
 
 
