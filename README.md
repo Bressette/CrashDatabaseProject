@@ -1,4 +1,4 @@
-# crashDatabaseProject
+# Vermont Crash Database
 
 A database that holds data about crashes in vermont in 2016. The database is used
 to generate statistics from the dataset that could be used to identify patterns and
