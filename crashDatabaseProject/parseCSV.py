@@ -119,12 +119,21 @@ df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID',
 df_export_accident.to_csv("accident.csv", index=False)
 
 
-df_city = df_location[['locID', 'CITYORTOWN']]
+df_city = df_location[['CITYORTOWN']]
+df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
+df_city.drop_duplicates(keep='first', inplace=True)
+df_city.reset_index(inplace=True, drop=True)
+df_city.index += 1
+df_city['cityID'] = df_city.index
+df_city = df_city[['cityID', 'cityName']]
+
+df_city.to_csv("city.csv", index=False)
+
 df_location.drop(['CITYORTOWN'], axis=1, inplace=True)
 df_location = df_location.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
 df_location = df_location[["locID", "streetAddress", "roadChar"]]
 df_location.to_csv("location.csv", index=False)
-df_city.to_csv("city.csv", index=False)
+
 
 
 
