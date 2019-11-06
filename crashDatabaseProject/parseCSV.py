@@ -20,7 +20,7 @@ def export_weather(df):
     df_weather.reset_index(inplace=True, drop=True)
     df_weather.index += 1
     df_weather['condID'] = df_weather.index;
-    df_weather.to_csv("Weather CSV.csv")
+    df_weather.to_csv("Weather CSV.csv", index=False)
     return df_weather
 
 #function that declares a dataframe location drops duplicates and creates new column
@@ -41,7 +41,7 @@ def export_driver(df):
     df_driver.reset_index(inplace=True, drop=True)
     df_driver.index += 1
     df_driver['driverID'] = df_driver.index
-    df_driver.to_csv("driver.csv")
+    df_driver.to_csv("driver.csv", index=False)
     return df_driver
 
 
@@ -50,14 +50,14 @@ def export_animal(df):
     df_animal = df[['accID', 'Animal']]
     df_animal = df_animal.dropna(axis=0, subset=['Animal'])
     df_export_animal = df_animal[df_animal.Animal != "None/Other"]
-    df_export_animal.to_csv("animal.csv")
+    df_export_animal.to_csv("animal.csv", index=False)
     return df_export_animal
 
 def export_vehicle(df):
     df_vehicle = df[['accID', 'Involving']]
     df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
     df_export_vehicle = df_export_vehicle.dropna(subset=['Involving'])
-    df_export_vehicle.to_csv("vehicle.csv")
+    df_export_vehicle.to_csv("vehicle.csv", index=False)
     return df_export_vehicle
 
 #df is the base data frame that the data is stored as
