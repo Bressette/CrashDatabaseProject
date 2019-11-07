@@ -20,11 +20,9 @@ def export_weather(df):
     df_weather.reset_index(inplace=True, drop=True)
     df_weather.index += 1
     df_weather['condID'] = df_weather.index;
-    df_weather['SurfaceCondition'].fillna("Unknown", inplace=True)
-    df_weather['DayNight'].fillna("Unknown", inplace=True)
     df_weather = df_weather.rename(columns={'Weather': 'weather', 'SurfaceCondition': 'surfaceCond', 'DayNight': 'dayNight'})
     df_weather = df_weather[['condID', 'weather', 'surfaceCond', 'dayNight']]
-    df_weather.to_csv("Weather CSV.csv", index=False)
+    #df_weather.to_csv("Weather CSV.csv", index=False)
     return df_weather
 
 #function that declares a dataframe location drops duplicates and creates new column
@@ -46,8 +44,6 @@ def export_driver(df):
     df_driver.reset_index(inplace=True, drop=True)
     df_driver.index += 1
     df_driver['driverID'] = df_driver.index
-    df_driver['Impairment'].fillna("None", inplace=True)
-    df_driver = df_driver.dropna(axis=0, subset=['InjuryType'])
     return df_driver
 
 
@@ -78,57 +74,6 @@ df_animal = export_animal(df)
 df_vehicle = export_vehicle(df)
 
 
-
-
-
-#create dataframe to store data for accident
-df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
-
-#set accDate to the date portion of the ACCIDENTDATE field through applying the get_date function
-df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
-
-
-#set accTime to the time portion of the ACCIDENTDATE field through applying the get_time function
-df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
-#remove the useless end of the time field using rstrip
-df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
-
-#drops the now useless datetime field
-df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
-
-
-#create new dataframe to hold only the fields that need to be in the accident table
-df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
-df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
-
-#merge df and df_location so that the master table has the location primary key
-mergedLocation = pandas.merge(df, df_location, how='left', left_on=['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics'],
-                      right_on=['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics'])
-
-#merge df and df_weather so that the master table has the weather primary key
-mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
-                             right_on=['weather', 'surfaceCond', 'dayNight'])
-
-#merge df and df_driver so that the master table has the location primary key
-mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
-                            right_on=['Impairment', 'InjuryType'])
-
-
-
-#create fields in accident to hold foreign key values from merged dataframes
-df_final_accident['driverID'] = mergedDriver['driverID']
-df_final_accident['condID'] = mergedWeather[['condID']]
-df_final_accident['locID'] = mergedLocation[['locID']]
-df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-                                        'agency']]
-df_export_accident.index += 1
-df_export_accident['accID'] = df_export_accident.index
-df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-                                        'agency']]
-df_export_accident['collisionDir'].fillna("Unkown", inplace=True)
-df_export_accident.to_csv("accident.csv", index=False)
-
-
 df_city = df_location[['CITYORTOWN']]
 
 df_city.drop_duplicates(keep='first', inplace=True)
@@ -152,14 +97,63 @@ df_city.to_csv("city.csv", index=False)
 
 df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
+
+
+#create dataframe to store data for accident
+df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
+
+#set accDate to the date portion of the ACCIDENTDATE field through applying the get_date function
+df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
+
+
+#set accTime to the time portion of the ACCIDENTDATE field through applying the get_time function
+df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
+#remove the useless end of the time field using rstrip
+df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
+
+#drops the now useless datetime field
+df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
+
+
+#create new dataframe to hold only the fields that need to be in the accident table
+df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
+df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
+
+#merge df and df_location so that the master table has the location primary key
+mergedLocation = pandas.merge(df, mergedCity, how='left', left_on=['STREETADDRESS', 'RoadCharacteristics'],
+                right_on=['streetAddress', 'roadChar'])
+
+
+#merge df and df_weather so that the master table has the weather primary key
+mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
+                             right_on=['weather', 'surfaceCond', 'dayNight'])
+
+#merge df and df_driver so that the master table has the location primary key
+mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
+                            right_on=['driverImpair', 'driverDamage'])
+
+
+
+#create fields in accident to hold foreign key values from merged dataframes
+df_final_accident['driverID'] = mergedDriver['driverID']
+df_final_accident['condID'] = mergedWeather[['condID']]
+df_final_accident['locID'] = mergedLocation[['locID']]
+df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+                                        'agency']]
+df_export_accident.index += 1
+df_export_accident['accID'] = df_export_accident.index
+df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+                                        'agency']]
+df_export_accident['collisionDir'].fillna("Unkown", inplace=True)
+df_export_accident.to_csv("accident.csv", index=False)
+
+df_weather['surfaceCond'].fillna("Unknown", inplace=True)
+df_weather['dayNight'].fillna("Unknown", inplace=True)
+df_weather.to_csv("Weather CSV.csv", index=False)
+
+df_driver['driverImpair'].fillna("None", inplace=True)
+df_driver = df_driver.dropna(axis=0, subset=['driverDamage'])
 df_driver.to_csv("driver.csv", index=False)
-
-
-
-
-
-
-
 
 
 
