@@ -1,5 +1,5 @@
 import pandas
-
+import numpy as np
 
 #function that separates date and time then returns the date
 def get_date(s):
@@ -20,6 +20,10 @@ def export_weather(df):
     df_weather.reset_index(inplace=True, drop=True)
     df_weather.index += 1
     df_weather['condID'] = df_weather.index;
+    df_weather['SurfaceCondition'].fillna("Unknown", inplace=True)
+    df_weather['DayNight'].fillna("Unknown", inplace=True)
+    df_weather = df_weather.rename(columns={'Weather': 'weather', 'SurfaceCondition': 'surfaceCond', 'DayNight': 'dayNight'})
+    df_weather = df_weather[['condID', 'weather', 'surfaceCond', 'dayNight']]
     df_weather.to_csv("Weather CSV.csv", index=False)
     return df_weather
 
@@ -103,7 +107,7 @@ mergedLocation = pandas.merge(df, df_location, how='left', left_on=['STREETADDRE
 
 #merge df and df_weather so that the master table has the weather primary key
 mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
-                             right_on=['Weather', 'SurfaceCondition', 'DayNight'])
+                             right_on=['weather', 'surfaceCond', 'dayNight'])
 
 #merge df and df_driver so that the master table has the location primary key
 mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
