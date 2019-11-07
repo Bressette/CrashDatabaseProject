@@ -52,6 +52,7 @@ def export_animal(df):
     df_animal = df[['accID', 'Animal']]
     df_animal = df_animal.dropna(axis=0, subset=['Animal'])
     df_export_animal = df_animal[df_animal.Animal != "None/Other"]
+    df_export_animal = df_export_animal.rename(columns={'Animal': 'animalType'})
     df_export_animal.to_csv("animal.csv", index=False)
     return df_export_animal
 
@@ -108,6 +109,8 @@ mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'Su
 mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
                             right_on=['Impairment', 'InjuryType'])
 
+
+
 #create fields in accident to hold foreign key values from merged dataframes
 df_final_accident['driverID'] = mergedDriver['driverID']
 df_final_accident['condID'] = mergedWeather[['condID']]
@@ -123,19 +126,25 @@ df_export_accident.to_csv("accident.csv", index=False)
 
 
 df_city = df_location[['CITYORTOWN']]
-df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
+
 df_city.drop_duplicates(keep='first', inplace=True)
 df_city.reset_index(inplace=True, drop=True)
 df_city.index += 1
 df_city['cityID'] = df_city.index
+
+
+mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
+print(list(mergedCity))
+mergedCity.to_csv("mergedCity.csv", index=False)
+
+mergedCity.drop(['CITYORTOWN'], axis=1, inplace=True)
+mergedCity = mergedCity.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
+mergedCity = mergedCity[["locID", "cityID", "streetAddress", "roadChar"]]
+mergedCity.to_csv("location.csv", index=False)
+
+df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
 df_city = df_city[['cityID', 'cityName']]
-
 df_city.to_csv("city.csv", index=False)
-
-df_location.drop(['CITYORTOWN'], axis=1, inplace=True)
-df_location = df_location.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
-df_location = df_location[["locID", "streetAddress", "roadChar"]]
-df_location.to_csv("location.csv", index=False)
 
 df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
