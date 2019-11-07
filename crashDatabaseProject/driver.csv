@@ -1,10 +1,10 @@
-Impairment,InjuryType,driverID
-None,Property Damage Only,1
-None,Injury,3
-Alcohol,Property Damage Only,4
-Alcohol,Injury,5
-Drugs,Injury,6
-Alcohol,Fatal,7
-None,Fatal,8
-Alcohol and Drugs,Injury,9
-Drugs,Fatal,10
+driverID,driverImpair,driverDamage
+1,None,Property Damage Only
+3,None,Injury
+4,Alcohol,Property Damage Only
+5,Alcohol,Injury
+6,Drugs,Injury
+7,Alcohol,Fatal
+8,None,Fatal
+9,Alcohol and Drugs,Injury
+10,Drugs,Fatal

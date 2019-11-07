@@ -44,7 +44,6 @@ def export_driver(df):
     df_driver['driverID'] = df_driver.index
     df_driver['Impairment'].fillna("None", inplace=True)
     df_driver = df_driver.dropna(axis=0, subset=['InjuryType'])
-    df_driver.to_csv("driver.csv", index=False)
     return df_driver
 
 
@@ -138,7 +137,9 @@ df_location = df_location.rename(columns={"STREETADDRESS": "streetAddress", "Roa
 df_location = df_location[["locID", "streetAddress", "roadChar"]]
 df_location.to_csv("location.csv", index=False)
 
-
+df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
+df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
+df_driver.to_csv("driver.csv", index=False)
 
 
 
