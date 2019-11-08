@@ -152,7 +152,7 @@ df_weather['dayNight'].fillna("Unknown", inplace=True)
 df_weather.to_csv("Weather CSV.csv", index=False)
 
 df_driver['driverImpair'].fillna("None", inplace=True)
-df_driver = df_driver.dropna(axis=0, subset=['driverDamage'])
+df_driver['driverDamage'].fillna("Unknown", inplace=True)
 df_driver.to_csv("driver.csv", index=False)
 
 

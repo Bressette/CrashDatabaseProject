@@ -1,5 +1,6 @@
 driverID,driverImpair,driverDamage
 1,None,Property Damage Only
+2,None,Unknown
 3,None,Injury
 4,Alcohol,Property Damage Only
 5,Alcohol,Injury
