@@ -11,3 +11,6 @@ and separate CSV files are generated for each table in the database design. The 
 CSVs are used to import data into a mySQL database. The database is hosted on a MariaDB server
 and the layout of the tables was based on an entity relationship diagram that was formed to 
 minimize data redundancy and maintain a high level of normalization.
+
+## Database Structure
+![ERD](https://github.com/Bressette/crashDatabaseProject/blob/master/crashDatabaseProject/ERD.png)
