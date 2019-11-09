@@ -12,5 +12,5 @@ CSVs are used to import data into a mySQL database. The database is hosted on a 
 and the layout of the tables was based on an entity relationship diagram that was formed to 
 minimize data redundancy and maintain a high level of normalization.
 
-##Database Structure
+## Database Structure
 ![ERD](https://github.com/Bressette/crashDatabaseProject/blob/master/crashDatabaseProject/ERD.png)
