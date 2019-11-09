@@ -5,7 +5,7 @@ create table location
 	streetAddress varchar(50) not null,
 	roadChar enum("Not at a Junction", "Driveway", "Parking Lot", "Five-point or more", "T - Intersection", "Four-way Intersection", "On Ramp", "Traffic circle / roundabout",
 	"Y - Intersection", "Off Ramp", "Not Reported"),
-	foreign key cityID references city(cityID)
+	foreign key(cityID) references city(cityID)
 );
 
 
@@ -21,8 +21,8 @@ create table weather
 create table driver
 (
 	driverID bigint(20) primary key not null auto_increment,
-	driverImpair enum("Alcohol", "Drugs"),
-	driverDamage enum("Property Damage Only", "Injury", "Fatal")
+	driverImpair enum("Alcohol", "Drugs", "None"),
+	driverDamage enum("Property Damage Only", "Injury", "Fatal", "Unknown")
 );
 
 create table accident
