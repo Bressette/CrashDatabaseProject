@@ -46,3 +46,11 @@ fields terminated by ','
 OPTIONALLY ENCLOSED BY '"'
 lines terminated by '\r\n'
 ignore 1 lines;
+
+load data local infile '/home/jbressette6507/address.csv'
+into table address
+fields terminated by ','
+OPTIONALLY ENCLOSED by ','
+OPTIONALLY ENCLOSED by '"'
+lines terminated by '\r\n'
+ignore 1 lines;

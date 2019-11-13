@@ -102,6 +102,7 @@ df_address = df_address.rename(columns={'STREETADDRESS': 'streetAddress'})
 mergedLocation = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
 df_export_address = mergedLocation[['streetAddress', 'cityID']]
 df_export_address.drop_duplicates(keep='first', inplace=True)
+df_export_address.reset_index(inplace=True, drop=True)
 df_export_address.index += 1
 df_export_address['addressID'] = df_export_address.index
 df_export_address = df_export_address[['addressID', 'streetAddress', 'cityID']]

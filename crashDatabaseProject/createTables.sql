@@ -1,13 +1,19 @@
 create table location
 (
 	locID bigint(20) primary key not null auto_increment,
-	cityID bigint(20) not null,
-	streetAddress varchar(50) not null,
+	addressID bigint(20) not null,
 	roadChar enum("Not at a Junction", "Driveway", "Parking Lot", "Five-point or more", "T - Intersection", "Four-way Intersection", "On Ramp", "Traffic circle / roundabout",
 	"Y - Intersection", "Off Ramp", "Not Reported"),
-	foreign key(cityID) references city(cityID)
+	foreign key(addressID) references address(addressID)
 );
 
+create table address
+(
+	addressID bigint(20) primary key not null auto_increment,
+	streetAddress varchar(50) not null,
+	cityID bigint(20) not null,
+	foreign key(cityID) references city(cityID)
+);
 
 create table weather
 (
