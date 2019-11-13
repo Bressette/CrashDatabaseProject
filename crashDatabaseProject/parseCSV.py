@@ -71,7 +71,6 @@ def format_location(mergedCity):
                                                                       value="Not Reported")
     mergedCity["roadChar"] = mergedCity["roadChar"].fillna("Not Reported")
     mergedCity["streetAddress"] = mergedCity["streetAddress"].fillna("Not Reported")
-    mergedCity.to_csv("location.csv", index=False)
     return mergedCity
 
 
@@ -93,16 +92,32 @@ df_city.reset_index(inplace=True, drop=True)
 df_city.index += 1
 df_city['cityID'] = df_city.index
 
-df_address = df_location[['STREETADDRESS']]
-df_address['cityID'] = df_city['cityID']
-df_address['addressID'] = df_address.index
-df_address = df_address.rename(columns={'STREETADDRESS': 'streetAddress'})
-df_export_address = df_address[['addressID', 'streetAddress', 'cityID']]
-df_export_address.to_csv("address.csv", index=False)
-
 mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
 mergedCity = format_location(mergedCity)
 
+
+df_address = df_location[['STREETADDRESS']]
+df_address['addressID'] = df_address.index
+df_address = df_address.rename(columns={'STREETADDRESS': 'streetAddress'})
+mergedLocation = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
+df_export_address = mergedLocation[['streetAddress', 'cityID']]
+df_export_address.drop_duplicates(keep='first', inplace=True)
+df_export_address.index += 1
+df_export_address['addressID'] = df_export_address.index
+df_export_address = df_export_address[['addressID', 'streetAddress', 'cityID']]
+
+#df_address['cityID'] = df_city['cityID']
+
+#df_export_address = df_address[['addressID', 'streetAddress', 'cityID']]
+df_export_address.to_csv("address.csv", index=False)
+
+
+
+#mergedLocation = pandas.merge(mergedCity, df_export_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
+mergedLocation.to_csv("Test location merge.csv", index=False)
+
+mergedCity.drop(['cityID'], axis=1, inplace=True)
+mergedCity.to_csv("location.csv", index=False)
 
 
 df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
