@@ -115,10 +115,17 @@ df_export_address.to_csv("address.csv", index=False)
 
 
 #mergedLocation = pandas.merge(mergedCity, df_export_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
-mergedLocation.to_csv("Test location merge.csv", index=False)
+
 
 mergedCity.drop(['cityID'], axis=1, inplace=True)
-mergedCity.to_csv("location.csv", index=False)
+mergedLocation = pandas.merge(mergedCity, df_export_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
+mergedLocation.drop(['locID'], axis=1, inplace=True)
+mergedLocation.drop_duplicates(keep='first', inplace=True)
+mergedLocation.reset_index(inplace=True, drop=True)
+mergedLocation.index += 1
+mergedLocation['locID'] = mergedLocation.index
+mergedLocation = mergedLocation[['locID', 'addressID', 'roadChar']]
+mergedLocation.to_csv("location.csv", index=False)
 
 
 df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
