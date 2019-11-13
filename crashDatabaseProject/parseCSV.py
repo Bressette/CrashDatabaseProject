@@ -22,7 +22,6 @@ def export_weather(df):
     df_weather['condID'] = df_weather.index;
     df_weather = df_weather.rename(columns={'Weather': 'weather', 'SurfaceCondition': 'surfaceCond', 'DayNight': 'dayNight'})
     df_weather = df_weather[['condID', 'weather', 'surfaceCond', 'dayNight']]
-    #df_weather.to_csv("Weather CSV.csv", index=False)
     return df_weather
 
 #function that declares a dataframe location drops duplicates and creates new column
@@ -63,6 +62,19 @@ def export_vehicle(df):
     df_export_vehicle.to_csv("vehicle.csv", index=False)
     return df_export_vehicle
 
+
+def format_location(mergedCity):
+    mergedCity.drop(['CITYORTOWN'], axis=1, inplace=True)
+    mergedCity = mergedCity.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
+    mergedCity = mergedCity[["locID", "cityID", "streetAddress", "roadChar"]]
+    mergedCity["roadChar"] = mergedCity["roadChar"].replace(to_replace="Other - Explain in Narrative",
+                                                                      value="Not Reported")
+    mergedCity["roadChar"] = mergedCity["roadChar"].fillna("Not Reported")
+    mergedCity["streetAddress"] = mergedCity["streetAddress"].fillna("Not Reported")
+    mergedCity.to_csv("location.csv", index=False)
+    return mergedCity
+
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -83,13 +95,9 @@ df_city['cityID'] = df_city.index
 
 
 mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
-print(list(mergedCity))
-mergedCity.to_csv("mergedCity.csv", index=False)
+mergedCity = format_location(mergedCity)
 
-mergedCity.drop(['CITYORTOWN'], axis=1, inplace=True)
-mergedCity = mergedCity.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
-mergedCity = mergedCity[["locID", "cityID", "streetAddress", "roadChar"]]
-mergedCity.to_csv("location.csv", index=False)
+
 
 df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
 df_city = df_city[['cityID', 'cityName']]
