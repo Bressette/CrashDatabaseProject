@@ -124,8 +124,10 @@ mergedLocation.drop_duplicates(keep='first', inplace=True)
 mergedLocation.reset_index(inplace=True, drop=True)
 mergedLocation.index += 1
 mergedLocation['locID'] = mergedLocation.index
+temp_mergedLocation = mergedLocation
 mergedLocation = mergedLocation[['locID', 'addressID', 'roadChar']]
 mergedLocation.to_csv("location.csv", index=False)
+
 
 
 df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
@@ -157,8 +159,8 @@ df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'Report
 df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
 #merge df and df_location so that the master table has the location primary key
-mergedLocation = pandas.merge(df, mergedCity, how='left', left_on=['STREETADDRESS', 'RoadCharacteristics'],
-                right_on=['streetAddress', 'roadChar'])
+mergedLocation = pandas.merge(df, temp_mergedLocation, how='left', left_on=['RoadCharacteristics'],
+                right_on=['roadChar'])
 
 
 #merge df and df_weather so that the master table has the weather primary key
@@ -181,16 +183,16 @@ df_export_accident.index += 1
 df_export_accident['accID'] = df_export_accident.index
 df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
-df_export_accident['collisionDir'].fillna("Unkown", inplace=True)
+df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unkown")
 df_export_accident.to_csv("accident.csv", index=False)
 
-df_weather['surfaceCond'].fillna("Unknown", inplace=True)
-df_weather['dayNight'].fillna("Unknown", inplace=True)
-df_weather.to_csv("Weather CSV.csv", index=False)
+df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
+df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
+df_weather.to_csv("Weather CSV.csv")
 
-df_driver['driverImpair'].fillna("None", inplace=True)
-df_driver['driverDamage'].fillna("Unknown", inplace=True)
-df_driver.to_csv("driver.csv", index=False)
+df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
+df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
+df_driver.to_csv("driver.csv")
 
 
 

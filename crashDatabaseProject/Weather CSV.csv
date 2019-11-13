@@ -1,115 +1,115 @@
-condID,weather,surfaceCond,dayNight
-1,Freezing Precipitation,Snow,Day
-2,Freezing Precipitation,Ice,Day
-3,Cloudy,Wet,Night
-4,Wind,Ice,Day
-5,Unknown,Unknown,Night
-6,Clear,Dry,Night
-7,Cloudy,Dry,Day
-8,Freezing Precipitation,Snow,Night
-9,Unknown,Unknown,Day
-10,Clear,Dry,Day
-11,Clear,Wet,Night
-12,Unknown,Dry,Day
-13,Clear,Snow,Day
-14,Clear,Slush,Day
-15,Rain,Wet,Day
-16,Clear,Wet,Day
-17,Cloudy,Dry,Night
-18,Freezing Precipitation,Slush,Day
-19,Cloudy,Ice,Day
-20,Cloudy,Wet,Day
-21,Cloudy,Ice,Night
-22,Rain,Wet,Night
-23,Unknown,Unknown,Day
-24,Clear,Ice,Night
-25,Unknown,Unknown,Unknown
-26,Freezing Precipitation,Unknown,Day
-27,Rain,Other - Explain in Narrative,Day
-28,Clear,Unknown,Day
-29,Cloudy,"Sand, mud, dirt, oil, gravel",Night
-30,Cloudy,Snow,Night
-31,Clear,Ice,Day
-32,Unknown,Unknown,Night
-33,Freezing Precipitation,Wet,Night
-34,Cloudy,Snow,Day
-35,Cloudy,Slush,Day
-36,Freezing Precipitation,Unknown,Night
-37,Clear,Snow,Night
-38,Rain,Water (standing / moving),Day
-39,Rain,"Sand, mud, dirt, oil, gravel",Day
-40,Rain,Ice,Night
-41,Cloudy,Unknown,Day
-42,Freezing Precipitation,Wet,Day
-43,Wind,Snow,Day
-44,Clear,"Sand, mud, dirt, oil, gravel",Day
-45,Clear,Slush,Night
-46,Cloudy,Not Reported,Day
-47,Freezing Precipitation,Ice,Night
-48,Cloudy,Unknown,Day
-49,Unknown,Wet,Day
-50,Cloudy,Other - Explain in Narrative,Day
-51,Unknown,Dry,Night
-52,Unknown,Snow,Unknown
-53,Clear,Unknown,Day
-54,Unknown,"Sand, mud, dirt, oil, gravel",Day
-55,Rain,Slush,Day
-56,Clear,Other - Explain in Narrative,Night
-57,Unknown,Snow,Day
-58,Unknown,Wet,Night
-59,Clear,Water (standing / moving),Night
-60,Clear,Dry,Unknown
-61,Freezing Precipitation,Slush,Night
-62,Cloudy,"Sand, mud, dirt, oil, gravel",Day
-63,Rain,Dry,Day
-64,Clear,Other - Explain in Narrative,Day
-65,Unknown,Not Reported,Day
-66,Freezing Precipitation,Dry,Day
-67,Freezing Precipitation,Other - Explain in Narrative,Day
-68,Rain,Wet,Unknown
-69,Unknown,Unknown,Unknown
-70,Rain,"Sand, mud, dirt, oil, gravel",Night
-71,Unknown,Ice,Night
-72,Rain,Unknown,Night
-73,Unknown,Ice,Day
-74,Rain,Ice,Day
-75,Clear,"Sand, mud, dirt, oil, gravel",Night
-76,Wind,Wet,Day
-77,Clear,Unknown,Night
-78,Clear,Wet,Unknown
-79,Unknown,Wet,Unknown
-80,Freezing Precipitation,"Sand, mud, dirt, oil, gravel",Day
-81,Rain,Dry,Night
-82,Rain,Unknown,Day
-83,Rain,Snow,Night
-84,Wind,Snow,Night
-85,Wind,Dry,Day
-86,Unknown,Other - Explain in Narrative,Night
-87,Cloudy,Dry,Unknown
-88,Rain,Water (standing / moving),Night
-89,Freezing Precipitation,Dry,Night
-90,Freezing Precipitation,Water (standing / moving),Night
-91,Wind,Slush,Day
-92,Cloudy,Unknown,Unknown
-93,Rain,Slush,Night
-94,Clear,Unknown,Unknown
-95,Clear,Unknown,Night
-96,Unknown,"Sand, mud, dirt, oil, gravel",Night
-97,Unknown,Slush,Day
-98,Cloudy,Unknown,Night
-99,Cloudy,Other - Explain in Narrative,Night
-100,Unknown,Snow,Night
-101,Rain,Unknown,Night
-102,Unknown,Dry,Unknown
-103,Cloudy,Unknown,Night
-104,Unknown,Ice,Unknown
-105,Rain,Snow,Day
-106,Clear,Not Reported,Day
-107,Cloudy,Slush,Night
-108,Unknown,Other - Explain in Narrative,Day
-109,Unknown,Not Reported,Night
-110,Unknown,Not Reported,Unknown
-111,Wind,Ice,Night
-112,Freezing Precipitation,Unknown,Day
-113,Freezing Precipitation,Other - Explain in Narrative,Night
-114,Wind,Wet,Night
+,condID,weather,surfaceCond,dayNight
+1,1,Freezing Precipitation,Snow,Day
+2,2,Freezing Precipitation,Ice,Day
+3,3,Cloudy,Wet,Night
+4,4,Wind,Ice,Day
+5,5,Unknown,Unknown,Night
+6,6,Clear,Dry,Night
+7,7,Cloudy,Dry,Day
+8,8,Freezing Precipitation,Snow,Night
+9,9,Unknown,Unknown,Day
+10,10,Clear,Dry,Day
+11,11,Clear,Wet,Night
+12,12,Unknown,Dry,Day
+13,13,Clear,Snow,Day
+14,14,Clear,Slush,Day
+15,15,Rain,Wet,Day
+16,16,Clear,Wet,Day
+17,17,Cloudy,Dry,Night
+18,18,Freezing Precipitation,Slush,Day
+19,19,Cloudy,Ice,Day
+20,20,Cloudy,Wet,Day
+21,21,Cloudy,Ice,Night
+22,22,Rain,Wet,Night
+23,23,Unknown,Unknown,Day
+24,24,Clear,Ice,Night
+25,25,Unknown,Unknown,Unknown
+26,26,Freezing Precipitation,Unknown,Day
+27,27,Rain,Other - Explain in Narrative,Day
+28,28,Clear,Unknown,Day
+29,29,Cloudy,"Sand, mud, dirt, oil, gravel",Night
+30,30,Cloudy,Snow,Night
+31,31,Clear,Ice,Day
+32,32,Unknown,Unknown,Night
+33,33,Freezing Precipitation,Wet,Night
+34,34,Cloudy,Snow,Day
+35,35,Cloudy,Slush,Day
+36,36,Freezing Precipitation,Unknown,Night
+37,37,Clear,Snow,Night
+38,38,Rain,Water (standing / moving),Day
+39,39,Rain,"Sand, mud, dirt, oil, gravel",Day
+40,40,Rain,Ice,Night
+41,41,Cloudy,Unknown,Day
+42,42,Freezing Precipitation,Wet,Day
+43,43,Wind,Snow,Day
+44,44,Clear,"Sand, mud, dirt, oil, gravel",Day
+45,45,Clear,Slush,Night
+46,46,Cloudy,Not Reported,Day
+47,47,Freezing Precipitation,Ice,Night
+48,48,Cloudy,Unknown,Day
+49,49,Unknown,Wet,Day
+50,50,Cloudy,Other - Explain in Narrative,Day
+51,51,Unknown,Dry,Night
+52,52,Unknown,Snow,Unknown
+53,53,Clear,Unknown,Day
+54,54,Unknown,"Sand, mud, dirt, oil, gravel",Day
+55,55,Rain,Slush,Day
+56,56,Clear,Other - Explain in Narrative,Night
+57,57,Unknown,Snow,Day
+58,58,Unknown,Wet,Night
+59,59,Clear,Water (standing / moving),Night
+60,60,Clear,Dry,Unknown
+61,61,Freezing Precipitation,Slush,Night
+62,62,Cloudy,"Sand, mud, dirt, oil, gravel",Day
+63,63,Rain,Dry,Day
+64,64,Clear,Other - Explain in Narrative,Day
+65,65,Unknown,Not Reported,Day
+66,66,Freezing Precipitation,Dry,Day
+67,67,Freezing Precipitation,Other - Explain in Narrative,Day
+68,68,Rain,Wet,Unknown
+69,69,Unknown,Unknown,Unknown
+70,70,Rain,"Sand, mud, dirt, oil, gravel",Night
+71,71,Unknown,Ice,Night
+72,72,Rain,Unknown,Night
+73,73,Unknown,Ice,Day
+74,74,Rain,Ice,Day
+75,75,Clear,"Sand, mud, dirt, oil, gravel",Night
+76,76,Wind,Wet,Day
+77,77,Clear,Unknown,Night
+78,78,Clear,Wet,Unknown
+79,79,Unknown,Wet,Unknown
+80,80,Freezing Precipitation,"Sand, mud, dirt, oil, gravel",Day
+81,81,Rain,Dry,Night
+82,82,Rain,Unknown,Day
+83,83,Rain,Snow,Night
+84,84,Wind,Snow,Night
+85,85,Wind,Dry,Day
+86,86,Unknown,Other - Explain in Narrative,Night
+87,87,Cloudy,Dry,Unknown
+88,88,Rain,Water (standing / moving),Night
+89,89,Freezing Precipitation,Dry,Night
+90,90,Freezing Precipitation,Water (standing / moving),Night
+91,91,Wind,Slush,Day
+92,92,Cloudy,Unknown,Unknown
+93,93,Rain,Slush,Night
+94,94,Clear,Unknown,Unknown
+95,95,Clear,Unknown,Night
+96,96,Unknown,"Sand, mud, dirt, oil, gravel",Night
+97,97,Unknown,Slush,Day
+98,98,Cloudy,Unknown,Night
+99,99,Cloudy,Other - Explain in Narrative,Night
+100,100,Unknown,Snow,Night
+101,101,Rain,Unknown,Night
+102,102,Unknown,Dry,Unknown
+103,103,Cloudy,Unknown,Night
+104,104,Unknown,Ice,Unknown
+105,105,Rain,Snow,Day
+106,106,Clear,Not Reported,Day
+107,107,Cloudy,Slush,Night
+108,108,Unknown,Other - Explain in Narrative,Day
+109,109,Unknown,Not Reported,Night
+110,110,Unknown,Not Reported,Unknown
+111,111,Wind,Ice,Night
+112,112,Freezing Precipitation,Unknown,Day
+113,113,Freezing Precipitation,Other - Explain in Narrative,Night
+114,114,Wind,Wet,Night
