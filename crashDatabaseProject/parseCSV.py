@@ -183,16 +183,20 @@ df_export_accident.index += 1
 df_export_accident['accID'] = df_export_accident.index
 df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
-df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unkown")
+df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(to_replace = "Other - Explain in Narrative", value = "Unknown")
+df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
 df_export_accident.to_csv("accident.csv", index=False)
 
+df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace = "Not Reported", value = "Unknown")
+df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace = "Other - Explain in Narrative", value = "Unknown")
 df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
 df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
-df_weather.to_csv("Weather CSV.csv")
+df_weather.to_csv("Weather CSV.csv", index=False)
+
 
 df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
 df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
-df_driver.to_csv("driver.csv")
+df_driver.to_csv("driver.csv", index = False)
 
 
 

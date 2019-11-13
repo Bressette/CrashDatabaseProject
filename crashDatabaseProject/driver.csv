@@ -1,11 +1,11 @@
-,driverID,driverImpair,driverDamage
-1,1,None,Property Damage Only
-2,2,None,Unknown
-3,3,None,Injury
-4,4,Alcohol,Property Damage Only
-5,5,Alcohol,Injury
-6,6,Drugs,Injury
-7,7,Alcohol,Fatal
-8,8,None,Fatal
-9,9,Alcohol and Drugs,Injury
-10,10,Drugs,Fatal
+driverID,driverImpair,driverDamage
+1,None,Property Damage Only
+2,None,Unknown
+3,None,Injury
+4,Alcohol,Property Damage Only
+5,Alcohol,Injury
+6,Drugs,Injury
+7,Alcohol,Fatal
+8,None,Fatal
+9,Alcohol and Drugs,Injury
+10,Drugs,Fatal
