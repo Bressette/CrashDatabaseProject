@@ -74,6 +74,29 @@ def format_location(mergedCity):
     return mergedCity
 
 
+def sanitize_collision_dir(df):
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="No Turns, Thru moves only, Broadside ^<",
+                                                    value="No Turns, Thru moves only, Broadside")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Angle Broadside -->v--",
+                                                    value="Left Turn and Thru, Angle Broadside")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Broadside v<--",
+                                                    value="Left Turn and Thru, Broadside")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Head On ^v--",
+                                                    value="Left Turn and Thru, Head On")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turns, Same Direction, Rear End v--v--",
+                                                    value="Left Turns, Same Direction, Rear End")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Angle Broadside -->^--",
+                                                     value="Right Turn and Thru, Angle Broadside")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Head On v^--",
+                                                    value="Right Turn and Thru, Head On")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Broadside ^<--",
+                                                    value="Right Turn and Thru, Broadside")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left and Right Turns, Simultaneous Turn Crash --vv--",
+                                                    value="Left and Right Turns, Simultaneous Turn Crash")
+    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn, Same Direction, Rear End ^--^--",
+                                                    value="Right Turn, Same Direction, Rear End")
+    return df
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -185,6 +208,7 @@ df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID',
                                         'agency']]
 df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(to_replace = "Other - Explain in Narrative", value = "Unknown")
 df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
+df_export_accident = sanitize_collision_dir(df_export_accident)
 df_export_accident.to_csv("accident.csv", index=False)
 
 df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace = "Not Reported", value = "Unknown")
