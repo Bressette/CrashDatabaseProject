@@ -149,6 +149,16 @@ def create_address(df_location):
     return df_address
 
 
+def export_location(mergedAddress):
+    mergedAddress.drop(['locID'], axis=1, inplace=True)
+    mergedAddress.drop_duplicates(keep='first', inplace=True)
+    mergedAddress.reset_index(inplace=True, drop=True)
+    mergedAddress.index += 1
+    mergedAddress['locID'] = mergedAddress.index
+    mergedAddress = mergedAddress[['locID', 'addressID', 'roadChar']]
+    mergedAddress.to_csv("location.csv", index=False)
+    return mergedAddress
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -170,19 +180,7 @@ mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['stree
                                  right_on=['streetAddress'])
 
 df_address = export_address(mergedAddress, df_location)
-
-
-
-
-mergedAddress.drop(['locID'], axis=1, inplace=True)
-mergedAddress.drop_duplicates(keep='first', inplace=True)
-mergedAddress.reset_index(inplace=True, drop=True)
-mergedAddress.index += 1
-mergedAddress['locID'] = mergedAddress.index
-mergedAddress = mergedAddress[['locID', 'addressID', 'roadChar']]
-mergedAddress.to_csv("location.csv", index=False)
-
-
+df_location = export_location(mergedAddress)
 df_city = export_city(df_city)
 
 
@@ -211,7 +209,7 @@ df_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAge
 df_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
 #merge df and df_location so that the master table has the location primary key
-mergedLocation = pandas.merge(df, mergedAddress, how='left', left_on=['RoadCharacteristics'],
+mergedLocation = pandas.merge(df, location, how='left', left_on=['RoadCharacteristics'],
                 right_on=['roadChar'])
 
 
