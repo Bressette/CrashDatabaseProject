@@ -115,10 +115,28 @@ def sanitize_driver(df_driver):
     return df_driver
 
 
+def create_city(df_location):
+    df_city = df_location[['CITYORTOWN']]
+    df_city.drop_duplicates(keep='first', inplace=True)
+    df_city.reset_index(inplace=True, drop=True)
+    df_city.index += 1
+    df_city['cityID'] = df_city.index
+    return df_city
+
+
+def export_city(df_city)
+    df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
+    df_city = df_city[['cityID', 'cityName']]
+    df_city.to_csv("city.csv", index=False)
+    return df_city
+
+
+
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
-#stores dataframes for finished weather, location, driver dataframes
+#stores dataframes for weather, location, driver dataframes
 df_weather = export_weather(df)
 df_location = export_location(df)
 df_driver = export_driver(df)
@@ -126,54 +144,28 @@ df_animal = export_animal(df)
 df_vehicle = export_vehicle(df)
 
 
-df_city = df_location[['CITYORTOWN']]
+df_city = create_city(df_location)
 
-df_city.drop_duplicates(keep='first', inplace=True)
-df_city.reset_index(inplace=True, drop=True)
-df_city.index += 1
-df_city['cityID'] = df_city.index
 
 mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
 mergedCity = format_location(mergedCity)
 
 
-df_address = df_location[['STREETADDRESS']]
-df_address['addressID'] = df_address.index
-df_address = df_address.rename(columns={'STREETADDRESS': 'streetAddress'})
-mergedLocation = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
-df_export_address = mergedLocation[['streetAddress', 'cityID']]
-df_export_address.drop_duplicates(keep='first', inplace=True)
-df_export_address.reset_index(inplace=True, drop=True)
-df_export_address.index += 1
-df_export_address['addressID'] = df_export_address.index
-df_export_address = df_export_address[['addressID', 'streetAddress', 'cityID']]
-
-#df_address['cityID'] = df_city['cityID']
-
-#df_export_address = df_address[['addressID', 'streetAddress', 'cityID']]
-df_export_address.to_csv("address.csv", index=False)
-
-
-
-#mergedLocation = pandas.merge(mergedCity, df_export_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
+df_address = export_address(mergedCity, df_location)
 
 
 mergedCity.drop(['cityID'], axis=1, inplace=True)
-mergedLocation = pandas.merge(mergedCity, df_export_address, how='left', left_on=['streetAddress'], right_on=['streetAddress'])
-mergedLocation.drop(['locID'], axis=1, inplace=True)
-mergedLocation.drop_duplicates(keep='first', inplace=True)
-mergedLocation.reset_index(inplace=True, drop=True)
-mergedLocation.index += 1
-mergedLocation['locID'] = mergedLocation.index
-temp_mergedLocation = mergedLocation
-mergedLocation = mergedLocation[['locID', 'addressID', 'roadChar']]
-mergedLocation.to_csv("location.csv", index=False)
+mergedAddress.drop(['locID'], axis=1, inplace=True)
+mergedAddress.drop_duplicates(keep='first', inplace=True)
+mergedAddress.reset_index(inplace=True, drop=True)
+mergedAddress.index += 1
+mergedAddress['locID'] = mergedAddress.index
+mergedAddress = mergedAddress[['locID', 'addressID', 'roadChar']]
+mergedAddress.to_csv("location.csv", index=False)
 
 
+df_city = export_city(df_city)
 
-df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
-df_city = df_city[['cityID', 'cityName']]
-df_city.to_csv("city.csv", index=False)
 
 df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
@@ -200,7 +192,7 @@ df_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAge
 df_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
 #merge df and df_location so that the master table has the location primary key
-mergedLocation = pandas.merge(df, temp_mergedLocation, how='left', left_on=['RoadCharacteristics'],
+mergedLocation = pandas.merge(df, mergedAddress, how='left', left_on=['RoadCharacteristics'],
                 right_on=['roadChar'])
 
 
