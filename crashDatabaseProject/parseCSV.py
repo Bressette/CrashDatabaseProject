@@ -220,6 +220,15 @@ def export_accident(df_accident):
     return df_export_accident
 
 
+def merge_city_address(df_location, df_city, df_address):
+    mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
+    mergedCity = format_location(mergedCity)
+
+    mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
+                                 right_on=['streetAddress'])
+    return mergedAddress
+
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -234,11 +243,7 @@ df_vehicle = export_vehicle(df)
 df_city = create_city(df_location)
 df_address = create_address(df_location)
 
-mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
-mergedCity = format_location(mergedCity)
-
-mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
-                                 right_on=['streetAddress'])
+mergedAddress = merge_city_address(df_location, df_city, df_address)
 
 df_address = export_address(mergedAddress, df_location)
 df_location = export_location(mergedAddress)
