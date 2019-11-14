@@ -40,12 +40,12 @@ create table accident
 	foreign key(locID) references location(locID),
 	foreign key(condID) references weather(condID),
 	foreign key(driverID) references driver(driverID),
-	collisionDir enum("Single Vehicle Crash", "Head On", "Same Direction Sideswipe", "Rear End", "No Turns, Thru moves only, Broadside", "Left Turn and Thru, Angle Broadside", 
-	"Opp Direction Sideswipe", "Rear-to-rear", "Right Turn and Thru, Same Direction Sideswipe/Angle Crash", "Left Turn and Thru, Head On", "Right Turn and Thru, Head On", "Unknown"),
+	collisionDir varchar(50),
 	accDate date not null,
 	accTime time not null,
 	agency varchar(20)
 );
+
 
 
 
