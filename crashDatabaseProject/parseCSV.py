@@ -104,14 +104,12 @@ def sanitize_weather(df_weather):
                                                                   value="Unknown")
     df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
     df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
-    df_weather.to_csv("Weather CSV.csv", index=False)
     return df_weather
 
 
 def sanitize_driver(df_driver):
     df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
     df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
-    df_driver.to_csv("driver.csv", index=False)
     return df_driver
 
 
@@ -198,6 +196,14 @@ def create_accident(df, df_location, df_weather, df_driver):
     return df_accident
 
 
+def export_weather(df_weather):
+    df_weather.to_csv("Weather CSV.csv", index=False)
+
+
+def export_driver(df_driver):
+    df_driver.to_csv("driver.csv", index=False)
+
+
 def export_accident(df_accident):
     df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                       'agency']]
@@ -246,9 +252,10 @@ df_accident = create_accident(df, df_location, df_weather, df_driver)
 df_accident = export_accident(df_accident)
 
 
-
 df_weather = sanitize_weather(df_weather)
+export_weather(df_weather)
 df_driver = sanitize_driver(df_driver)
+export_driver(df_driver)
 
 
 
