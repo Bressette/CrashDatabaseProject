@@ -159,6 +159,44 @@ def export_location(mergedAddress):
     mergedAddress.to_csv("location.csv", index=False)
     return mergedAddress
 
+
+def create_accident(df, df_location, df_weather, df_driver):
+    # create dataframe to store data for accident
+    df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
+
+    # set accDate to the date portion of the ACCIDENTDATE field through applying the get_date function
+    df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
+
+    # set accTime to the time portion of the ACCIDENTDATE field through applying the get_time function
+    df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
+    # remove the useless end of the time field using rstrip
+    df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
+
+    # drops the now useless datetime field
+    df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
+
+    # create new dataframe to hold only the fields that need to be in the accident table
+    df_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
+    df_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
+
+    # merge df and df_location so that the master table has the location primary key
+    mergedLocation = pandas.merge(df, df_location, how='left', left_on=['RoadCharacteristics'],
+                                  right_on=['roadChar'])
+
+    # merge df and df_weather so that the master table has the weather primary key
+    mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
+                                 right_on=['weather', 'surfaceCond', 'dayNight'])
+
+    # merge df and df_driver so that the master table has the location primary key
+    mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
+                                right_on=['driverImpair', 'driverDamage'])
+
+    # create fields in accident to hold foreign key values from merged dataframes
+    df_accident['driverID'] = mergedDriver['driverID']
+    df_accident['condID'] = mergedWeather[['condID']]
+    df_accident['locID'] = mergedLocation[['locID']]
+    return df_accident
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -187,46 +225,8 @@ df_city = export_city(df_city)
 df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
 
+df_accident = create_accident(df, df_location, df_weather, df_driver)
 
-#create dataframe to store data for accident
-df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
-
-#set accDate to the date portion of the ACCIDENTDATE field through applying the get_date function
-df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
-
-
-#set accTime to the time portion of the ACCIDENTDATE field through applying the get_time function
-df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
-#remove the useless end of the time field using rstrip
-df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
-
-#drops the now useless datetime field
-df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
-
-
-#create new dataframe to hold only the fields that need to be in the accident table
-df_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
-df_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
-
-#merge df and df_location so that the master table has the location primary key
-mergedLocation = pandas.merge(df, location, how='left', left_on=['RoadCharacteristics'],
-                right_on=['roadChar'])
-
-
-#merge df and df_weather so that the master table has the weather primary key
-mergedWeather = pandas.merge(df, df_weather, how='left', left_on=['Weather', 'SurfaceCondition', 'DayNight'],
-                             right_on=['weather', 'surfaceCond', 'dayNight'])
-
-#merge df and df_driver so that the master table has the location primary key
-mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'InjuryType'],
-                            right_on=['driverImpair', 'driverDamage'])
-
-
-
-#create fields in accident to hold foreign key values from merged dataframes
-df_accident['driverID'] = mergedDriver['driverID']
-df_accident['condID'] = mergedWeather[['condID']]
-df_accident['locID'] = mergedLocation[['locID']]
 df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
 df_export_accident.index += 1
