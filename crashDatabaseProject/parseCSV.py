@@ -14,7 +14,7 @@ def get_time(s):
 
 #function that declares a dataframe weather drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as condID for a primary key column
-def export_weather(df):
+def create_weather(df):
     df_weather = df[['Weather', 'SurfaceCondition', 'DayNight']]
     df_weather.drop_duplicates(keep='first', inplace=True)
     df_weather.reset_index(inplace=True, drop=True)
@@ -26,7 +26,7 @@ def export_weather(df):
 
 #function that declares a dataframe location drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as locID for a primary key column
-def export_location(df):
+def create_location(df):
     df_location = df[['STREETADDRESS', 'CITYORTOWN', 'RoadCharacteristics']]
     df_location.drop_duplicates(keep='first', inplace=True)
     df_location.reset_index(inplace=True, drop=True)
@@ -37,7 +37,7 @@ def export_location(df):
 
 #function that declares a dataframe driver drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as driverID for a primary key column
-def export_driver(df):
+def create_driver(df):
     df_driver = df[['Impairment', 'InjuryType']]
     df_driver.drop_duplicates(keep='first', inplace=True)
     df_driver.reset_index(inplace=True, drop=True)
@@ -197,13 +197,30 @@ def create_accident(df, df_location, df_weather, df_driver):
     df_accident['locID'] = mergedLocation[['locID']]
     return df_accident
 
+
+def export_accident(df_accident):
+    df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+                                      'agency']]
+    df_export_accident.index += 1
+    df_export_accident['accID'] = df_export_accident.index
+    df_export_accident = df_export_accident[
+        ['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+         'agency']]
+    df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(
+        to_replace="Other - Explain in Narrative", value="Unknown")
+    df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
+    df_export_accident = sanitize_collision_dir(df_export_accident)
+    df_export_accident.to_csv("accident.csv", index=False)
+    return df_export_accident
+
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
 #stores dataframes for weather, location, driver dataframes
-df_weather = export_weather(df)
-df_location = export_location(df)
-df_driver = export_driver(df)
+df_weather = create_weather(df)
+df_location = create_location(df)
+df_driver = create_driver(df)
 df_animal = export_animal(df)
 df_vehicle = export_vehicle(df)
 
@@ -226,17 +243,8 @@ df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType'
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
 
 df_accident = create_accident(df, df_location, df_weather, df_driver)
+df_accident = export_accident(df_accident)
 
-df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-                                        'agency']]
-df_export_accident.index += 1
-df_export_accident['accID'] = df_export_accident.index
-df_export_accident = df_export_accident[['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-                                        'agency']]
-df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(to_replace = "Other - Explain in Narrative", value = "Unknown")
-df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
-df_export_accident = sanitize_collision_dir(df_export_accident)
-df_export_accident.to_csv("accident.csv", index=False)
 
 
 df_weather = sanitize_weather(df_weather)
