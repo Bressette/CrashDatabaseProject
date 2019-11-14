@@ -124,13 +124,29 @@ def create_city(df_location):
     return df_city
 
 
-def export_city(df_city)
+def export_city(df_city):
     df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
     df_city = df_city[['cityID', 'cityName']]
     df_city.to_csv("city.csv", index=False)
     return df_city
 
 
+def export_address(mergedAddress, df_location):
+    df_export_address = mergedAddress[['streetAddress', 'cityID']]
+    df_export_address.drop_duplicates(keep='first', inplace=True)
+    df_export_address.reset_index(inplace=True, drop=True)
+    df_export_address.index += 1
+    df_export_address['addressID'] = df_export_address.index
+    df_export_address = df_export_address[['addressID', 'streetAddress', 'cityID']]
+    df_export_address.to_csv("address.csv", index=False)
+    return df_export_address
+
+
+def create_address(df_location):
+    df_address = df_location[['STREETADDRESS']]
+    df_address['addressID'] = df_address.index
+    df_address = df_address.rename(columns={'STREETADDRESS': 'streetAddress'})
+    return df_address
 
 
 #df is the base data frame that the data is stored as
@@ -145,16 +161,19 @@ df_vehicle = export_vehicle(df)
 
 
 df_city = create_city(df_location)
-
+df_address = create_address(df_location)
 
 mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
 mergedCity = format_location(mergedCity)
 
+mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
+                                 right_on=['streetAddress'])
 
-df_address = export_address(mergedCity, df_location)
+df_address = export_address(mergedAddress, df_location)
 
 
-mergedCity.drop(['cityID'], axis=1, inplace=True)
+
+
 mergedAddress.drop(['locID'], axis=1, inplace=True)
 mergedAddress.drop_duplicates(keep='first', inplace=True)
 mergedAddress.reset_index(inplace=True, drop=True)
