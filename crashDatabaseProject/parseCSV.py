@@ -97,6 +97,24 @@ def sanitize_collision_dir(df):
                                                     value="Right Turn, Same Direction, Rear End")
     return df
 
+
+def sanitize_weather(df_weather):
+    df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace="Not Reported", value="Unknown")
+    df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace="Other - Explain in Narrative",
+                                                                  value="Unknown")
+    df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
+    df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
+    df_weather.to_csv("Weather CSV.csv", index=False)
+    return df_weather
+
+
+def sanitize_driver(df_driver):
+    df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
+    df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
+    df_driver.to_csv("driver.csv", index=False)
+    return df_driver
+
+
 #df is the base data frame that the data is stored as
 df = pandas.read_csv("All Data.csv")
 
@@ -178,8 +196,8 @@ df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
 
 
 #create new dataframe to hold only the fields that need to be in the accident table
-df_final_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
-df_final_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
+df_accident = df_accident[['DirOfCollision', 'accDate', 'accTime', 'ReportingAgency']]
+df_accident.rename(columns={'ReportingAgency': 'agency', 'DirOfCollision': 'collisionDir'}, inplace=True)
 
 #merge df and df_location so that the master table has the location primary key
 mergedLocation = pandas.merge(df, temp_mergedLocation, how='left', left_on=['RoadCharacteristics'],
@@ -197,10 +215,10 @@ mergedDriver = pandas.merge(df, df_driver, how='left', left_on=['Impairment', 'I
 
 
 #create fields in accident to hold foreign key values from merged dataframes
-df_final_accident['driverID'] = mergedDriver['driverID']
-df_final_accident['condID'] = mergedWeather[['condID']]
-df_final_accident['locID'] = mergedLocation[['locID']]
-df_export_accident = df_final_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
+df_accident['driverID'] = mergedDriver['driverID']
+df_accident['condID'] = mergedWeather[['condID']]
+df_accident['locID'] = mergedLocation[['locID']]
+df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                         'agency']]
 df_export_accident.index += 1
 df_export_accident['accID'] = df_export_accident.index
@@ -211,16 +229,11 @@ df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("
 df_export_accident = sanitize_collision_dir(df_export_accident)
 df_export_accident.to_csv("accident.csv", index=False)
 
-df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace = "Not Reported", value = "Unknown")
-df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace = "Other - Explain in Narrative", value = "Unknown")
-df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
-df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
-df_weather.to_csv("Weather CSV.csv", index=False)
+
+df_weather = sanitize_weather(df_weather)
+df_driver = sanitize_driver(df_driver)
 
 
-df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
-df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
-df_driver.to_csv("driver.csv", index = False)
 
 
 
