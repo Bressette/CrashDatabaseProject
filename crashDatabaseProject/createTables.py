@@ -1,3 +1,6 @@
+import pandas
+import sanitizeTables as fix
+
 #function that declares a dataframe weather drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as condID for a primary key column
 def create_weather(df):

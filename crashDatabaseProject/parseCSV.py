@@ -1,7 +1,7 @@
 import pandas
 import sanitizeTables as fix
 import exportTables as export
-import createTables.py as create
+import createTables as create
 
 
 #df is the base data frame that the data is stored as

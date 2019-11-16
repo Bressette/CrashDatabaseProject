@@ -1,3 +1,6 @@
+import pandas
+
+
 #function that separates date and time then returns the date
 def get_date(s):
     s = s.rsplit("T", maxsplit=1)[0]
@@ -62,7 +65,7 @@ def sanitize_driver(df_driver):
 
 def merge_city_address(df_location, df_city, df_address):
     mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
-    mergedCity = fix.format_location(mergedCity)
+    mergedCity = format_location(mergedCity)
 
     mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
                                  right_on=['streetAddress'])

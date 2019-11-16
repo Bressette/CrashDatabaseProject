@@ -1,3 +1,6 @@
+import pandas
+import sanitizeTables as fix
+
 def export_weather(df_weather):
     df_weather.to_csv("Weather CSV.csv", index=False)
 
