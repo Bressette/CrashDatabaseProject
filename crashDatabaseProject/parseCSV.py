@@ -1,7 +1,7 @@
 import pandas
 import numpy as np
 import sanitizeTables as fix
-
+import exportTables as export
 
 #function that declares a dataframe weather drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as condID for a primary key column
@@ -36,30 +36,6 @@ def create_driver(df):
     df_driver['driverID'] = df_driver.index
     return df_driver
 
-
-def export_animal(df):
-    df['accID'] = df.index
-    df_animal = df[['accID', 'Animal']]
-    df_animal = df_animal.dropna(axis=0, subset=['Animal'])
-    df_export_animal = df_animal[df_animal.Animal != "None/Other"]
-    df_export_animal = df_export_animal.rename(columns={'Animal': 'animalType'})
-    df_export_animal.to_csv("animal.csv", index=False)
-    return df_export_animal
-
-def export_vehicle(df):
-    df_vehicle = df[['accID', 'Involving']]
-    df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
-    df_export_vehicle = df_export_vehicle.dropna(subset=['Involving'])
-    df_export_vehicle.to_csv("vehicle.csv", index=False)
-    return df_export_vehicle
-
-
-
-
-
-
-
-
 def create_city(df_location):
     df_city = df_location[['CITYORTOWN']]
     df_city.drop_duplicates(keep='first', inplace=True)
@@ -69,22 +45,7 @@ def create_city(df_location):
     return df_city
 
 
-def export_city(df_city):
-    df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
-    df_city = df_city[['cityID', 'cityName']]
-    df_city.to_csv("city.csv", index=False)
-    return df_city
 
-
-def export_address(mergedAddress, df_location):
-    df_export_address = mergedAddress[['streetAddress', 'cityID']]
-    df_export_address.drop_duplicates(keep='first', inplace=True)
-    df_export_address.reset_index(inplace=True, drop=True)
-    df_export_address.index += 1
-    df_export_address['addressID'] = df_export_address.index
-    df_export_address = df_export_address[['addressID', 'streetAddress', 'cityID']]
-    df_export_address.to_csv("address.csv", index=False)
-    return df_export_address
 
 
 def create_address(df_location):
@@ -94,15 +55,7 @@ def create_address(df_location):
     return df_address
 
 
-def export_location(mergedAddress):
-    mergedAddress.drop(['locID'], axis=1, inplace=True)
-    mergedAddress.drop_duplicates(keep='first', inplace=True)
-    mergedAddress.reset_index(inplace=True, drop=True)
-    mergedAddress.index += 1
-    mergedAddress['locID'] = mergedAddress.index
-    mergedAddress = mergedAddress[['locID', 'addressID', 'roadChar']]
-    mergedAddress.to_csv("location.csv", index=False)
-    return mergedAddress
+
 
 
 def create_accident(df, df_location, df_weather, df_driver):
@@ -143,28 +96,7 @@ def create_accident(df, df_location, df_weather, df_driver):
     return df_accident
 
 
-def export_weather(df_weather):
-    df_weather.to_csv("Weather CSV.csv", index=False)
 
-
-def export_driver(df_driver):
-    df_driver.to_csv("driver.csv", index=False)
-
-
-def export_accident(df_accident):
-    df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-                                      'agency']]
-    df_export_accident.index += 1
-    df_export_accident['accID'] = df_export_accident.index
-    df_export_accident = df_export_accident[
-        ['accID', 'locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
-         'agency']]
-    df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(
-        to_replace="Other - Explain in Narrative", value="Unknown")
-    df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
-    df_export_accident = fix.sanitize_collision_dir(df_export_accident)
-    df_export_accident.to_csv("accident.csv", index=False)
-    return df_export_accident
 
 
 
@@ -177,8 +109,8 @@ df = pandas.read_csv("All Data.csv")
 df_weather = create_weather(df)
 df_location = create_location(df)
 df_driver = create_driver(df)
-df_animal = export_animal(df)
-df_vehicle = export_vehicle(df)
+df_animal = export.export_animal(df)
+df_vehicle = export.export_vehicle(df)
 
 
 df_city = create_city(df_location)
@@ -186,22 +118,22 @@ df_address = create_address(df_location)
 
 mergedAddress = fix.merge_city_address(df_location, df_city, df_address)
 
-df_address = export_address(mergedAddress, df_location)
-df_location = export_location(mergedAddress)
-df_city = export_city(df_city)
+df_address = export.export_address(mergedAddress, df_location)
+df_location = export.export_location(mergedAddress)
+df_city = export.export_city(df_city)
 
 
 df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
 df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
 
 df_accident = create_accident(df, df_location, df_weather, df_driver)
-df_accident = export_accident(df_accident)
+df_accident = export.export_accident(df_accident)
 
 
 df_weather = fix.sanitize_weather(df_weather)
-export_weather(df_weather)
+export.export_weather(df_weather)
 df_driver = fix.sanitize_driver(df_driver)
-export_driver(df_driver)
+export.export_driver(df_driver)
 
 
 
