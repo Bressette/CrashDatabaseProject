@@ -1,16 +1,7 @@
 import pandas
 import numpy as np
+import sanitizeTables as fix
 
-#function that separates date and time then returns the date
-def get_date(s):
-    s = s.rsplit("T", maxsplit=1)[0]
-    return s
-
-#function that separates date and time then returns the time
-def get_time(s):
-    s = s.rsplit("T", maxsplit=1)[1]
-    s = s.rsplit(".", maxsplit=1)[0]
-    return s
 
 #function that declares a dataframe weather drops duplicates and creates new column
 #to hold the index of the dataframe and stores it as condID for a primary key column
@@ -19,7 +10,7 @@ def create_weather(df):
     df_weather.drop_duplicates(keep='first', inplace=True)
     df_weather.reset_index(inplace=True, drop=True)
     df_weather.index += 1
-    df_weather['condID'] = df_weather.index;
+    df_weather['condID'] = df_weather.index
     df_weather = df_weather.rename(columns={'Weather': 'weather', 'SurfaceCondition': 'surfaceCond', 'DayNight': 'dayNight'})
     df_weather = df_weather[['condID', 'weather', 'surfaceCond', 'dayNight']]
     return df_weather
@@ -31,7 +22,7 @@ def create_location(df):
     df_location.drop_duplicates(keep='first', inplace=True)
     df_location.reset_index(inplace=True, drop=True)
     df_location.index += 1
-    df_location['locID'] = df_location.index;
+    df_location['locID'] = df_location.index
     return df_location
 
 
@@ -63,54 +54,10 @@ def export_vehicle(df):
     return df_export_vehicle
 
 
-def format_location(mergedCity):
-    mergedCity.drop(['CITYORTOWN'], axis=1, inplace=True)
-    mergedCity = mergedCity.rename(columns={"STREETADDRESS": "streetAddress", "RoadCharacteristics": "roadChar"})
-    mergedCity = mergedCity[["locID", "cityID", "streetAddress", "roadChar"]]
-    mergedCity["roadChar"] = mergedCity["roadChar"].replace(to_replace="Other - Explain in Narrative",
-                                                                      value="Not Reported")
-    mergedCity["roadChar"] = mergedCity["roadChar"].fillna("Not Reported")
-    mergedCity["streetAddress"] = mergedCity["streetAddress"].fillna("Not Reported")
-    return mergedCity
 
 
-def sanitize_collision_dir(df):
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="No Turns, Thru moves only, Broadside ^<",
-                                                    value="No Turns, Thru moves only, Broadside")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Angle Broadside -->v--",
-                                                    value="Left Turn and Thru, Angle Broadside")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Broadside v<--",
-                                                    value="Left Turn and Thru, Broadside")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turn and Thru, Head On ^v--",
-                                                    value="Left Turn and Thru, Head On")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left Turns, Same Direction, Rear End v--v--",
-                                                    value="Left Turns, Same Direction, Rear End")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Angle Broadside -->^--",
-                                                     value="Right Turn and Thru, Angle Broadside")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Head On v^--",
-                                                    value="Right Turn and Thru, Head On")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn and Thru, Broadside ^<--",
-                                                    value="Right Turn and Thru, Broadside")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Left and Right Turns, Simultaneous Turn Crash --vv--",
-                                                    value="Left and Right Turns, Simultaneous Turn Crash")
-    df['collisionDir'] = df['collisionDir'].replace(to_replace="Right Turn, Same Direction, Rear End ^--^--",
-                                                    value="Right Turn, Same Direction, Rear End")
-    return df
 
 
-def sanitize_weather(df_weather):
-    df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace="Not Reported", value="Unknown")
-    df_weather['surfaceCond'] = df_weather['surfaceCond'].replace(to_replace="Other - Explain in Narrative",
-                                                                  value="Unknown")
-    df_weather['surfaceCond'] = df_weather['surfaceCond'].fillna("Unknown")
-    df_weather['dayNight'] = df_weather['dayNight'].fillna("Unknown")
-    return df_weather
-
-
-def sanitize_driver(df_driver):
-    df_driver['driverImpair'] = df_driver['driverImpair'].fillna("None")
-    df_driver['driverDamage'] = df_driver['driverDamage'].fillna("Unknown")
-    return df_driver
 
 
 def create_city(df_location):
@@ -163,12 +110,12 @@ def create_accident(df, df_location, df_weather, df_driver):
     df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
 
     # set accDate to the date portion of the ACCIDENTDATE field through applying the get_date function
-    df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(get_date)
+    df_accident["accDate"] = df_accident["ACCIDENTDATE"].apply(fix.get_date)
 
     # set accTime to the time portion of the ACCIDENTDATE field through applying the get_time function
-    df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(get_time)
+    df_accident["accTime"] = df_accident["ACCIDENTDATE"].apply(fix.get_time)
     # remove the useless end of the time field using rstrip
-    df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'));
+    df_accident["accTime"] = df_accident["accTime"].map(lambda x: x.rstrip('.'))
 
     # drops the now useless datetime field
     df_accident.drop(['ACCIDENTDATE'], axis=1, inplace=True)
@@ -215,18 +162,12 @@ def export_accident(df_accident):
     df_export_accident['collisionDir'] = df_export_accident['collisionDir'].replace(
         to_replace="Other - Explain in Narrative", value="Unknown")
     df_export_accident['collisionDir'] = df_export_accident['collisionDir'].fillna("Unknown")
-    df_export_accident = sanitize_collision_dir(df_export_accident)
+    df_export_accident = fix.sanitize_collision_dir(df_export_accident)
     df_export_accident.to_csv("accident.csv", index=False)
     return df_export_accident
 
 
-def merge_city_address(df_location, df_city, df_address):
-    mergedCity = pandas.merge(df_location, df_city, how='left', left_on=['CITYORTOWN'], right_on=['CITYORTOWN'])
-    mergedCity = format_location(mergedCity)
 
-    mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
-                                 right_on=['streetAddress'])
-    return mergedAddress
 
 
 #df is the base data frame that the data is stored as
@@ -243,7 +184,7 @@ df_vehicle = export_vehicle(df)
 df_city = create_city(df_location)
 df_address = create_address(df_location)
 
-mergedAddress = merge_city_address(df_location, df_city, df_address)
+mergedAddress = fix.merge_city_address(df_location, df_city, df_address)
 
 df_address = export_address(mergedAddress, df_location)
 df_location = export_location(mergedAddress)
@@ -257,9 +198,9 @@ df_accident = create_accident(df, df_location, df_weather, df_driver)
 df_accident = export_accident(df_accident)
 
 
-df_weather = sanitize_weather(df_weather)
+df_weather = fix.sanitize_weather(df_weather)
 export_weather(df_weather)
-df_driver = sanitize_driver(df_driver)
+df_driver = fix.sanitize_driver(df_driver)
 export_driver(df_driver)
 
 
