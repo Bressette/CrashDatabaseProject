@@ -73,3 +73,9 @@ def merge_city_address(df_location, df_city, df_address):
     mergedAddress = pandas.merge(mergedCity, df_address, how='left', left_on=['streetAddress'],
                                  right_on=['streetAddress'])
     return mergedAddress
+
+
+def format_driver(df_driver):
+    df_driver = df_driver.rename(columns={'Impairment': 'driverImpair', 'InjuryType': 'driverDamage'})
+    df_driver = df_driver[['driverID', 'driverImpair', 'driverDamage']]
+    return df_driver

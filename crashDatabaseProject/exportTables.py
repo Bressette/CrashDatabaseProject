@@ -60,7 +60,7 @@ def export_address(mergedAddress, df_location):
     return df_export_address
 
 
-#function that reformats animal and exports it to "animal.csv"
+#function that reformats animal and exports it to "animal.csv", taking in the base dataframe
 def export_animal(df):
     df['accID'] = df.index
     df_animal = df[['accID', 'Animal']]
@@ -71,7 +71,7 @@ def export_animal(df):
     return df_export_animal
 
 
-#function that reformats vehicle and exports it to "vehicle.csv"
+#function that reformats vehicle and exports it to "vehicle.csv", taking in the base dataframe
 def export_vehicle(df):
     df_vehicle = df[['accID', 'Involving']]
     df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
