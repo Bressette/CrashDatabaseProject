@@ -34,6 +34,9 @@ def create_driver(df):
     df_driver['driverID'] = df_driver.index
     return df_driver
 
+
+#function that creates a city dataframe based on locaiton information
+#that holds a city name and a city id
 def create_city(df_location):
     df_city = df_location[['CITYORTOWN']]
     df_city.drop_duplicates(keep='first', inplace=True)
@@ -45,7 +48,8 @@ def create_city(df_location):
 
 
 
-
+#function that creates an address dataframe based on a streetAddress
+#and creates an addressID for each address
 def create_address(df_location):
     df_address = df_location[['STREETADDRESS']]
     df_address['addressID'] = df_address.index
@@ -55,7 +59,8 @@ def create_address(df_location):
 
 
 
-
+#function that creates an accident table based on the base table,
+#and the location, weather, and driver tables
 def create_accident(df, df_location, df_weather, df_driver):
     # create dataframe to store data for accident
     df_accident = df[['DirOfCollision', 'ACCIDENTDATE', 'ReportingAgency']]
