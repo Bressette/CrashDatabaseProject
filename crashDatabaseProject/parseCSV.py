@@ -28,13 +28,14 @@ df_address = export.export_address(mergedAddress, df_location)
 df_location = export.export_location(mergedAddress)
 df_city = export.export_city(df_city)
 
-#
+#reformats driver so that the fields are the same as in the database schema
 df_driver = fix.format_driver(df_driver)
 
+#creates and exports the accident dataframe
 df_accident = create.create_accident(df, df_location, df_weather, df_driver)
 df_accident = export.export_accident(df_accident)
 
-
+#sanitizes and exports weather and driver dataframes
 df_weather = fix.sanitize_weather(df_weather)
 export.export_weather(df_weather)
 df_driver = fix.sanitize_driver(df_driver)
