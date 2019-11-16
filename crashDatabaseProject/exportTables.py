@@ -1,14 +1,17 @@
 import pandas
 import sanitizeTables as fix
 
+
+#function that exports the dataframe passed in to "Weather CSV.csv"
 def export_weather(df_weather):
     df_weather.to_csv("Weather CSV.csv", index=False)
 
-
+#function that exports the dataframe passed in to "driver.csv"
 def export_driver(df_driver):
     df_driver.to_csv("driver.csv", index=False)
 
-
+#function that sanitizes the accident dataframe passed in and exports it
+#to "accident.csv"
 def export_accident(df_accident):
     df_export_accident = df_accident[['locID', 'condID', 'driverID', 'collisionDir', 'accDate', 'accTime',
                                       'agency']]
@@ -24,6 +27,8 @@ def export_accident(df_accident):
     df_export_accident.to_csv("accident.csv", index=False)
     return df_export_accident
 
+
+#function that reformats the location table and exports it to "location.csv"
 def export_location(mergedAddress):
     mergedAddress.drop(['locID'], axis=1, inplace=True)
     mergedAddress.drop_duplicates(keep='first', inplace=True)
@@ -34,6 +39,8 @@ def export_location(mergedAddress):
     mergedAddress.to_csv("location.csv", index=False)
     return mergedAddress
 
+
+#function that reformats city and exports it to "city.csv"
 def export_city(df_city):
     df_city.rename(columns={'CITYORTOWN': 'cityName'}, inplace=True)
     df_city = df_city[['cityID', 'cityName']]
@@ -41,6 +48,7 @@ def export_city(df_city):
     return df_city
 
 
+#function that reformats address and exports it to "address.csv"
 def export_address(mergedAddress, df_location):
     df_export_address = mergedAddress[['streetAddress', 'cityID']]
     df_export_address.drop_duplicates(keep='first', inplace=True)
@@ -51,6 +59,8 @@ def export_address(mergedAddress, df_location):
     df_export_address.to_csv("address.csv", index=False)
     return df_export_address
 
+
+#function that reformats animal and exports it to "animal.csv"
 def export_animal(df):
     df['accID'] = df.index
     df_animal = df[['accID', 'Animal']]
@@ -60,6 +70,8 @@ def export_animal(df):
     df_export_animal.to_csv("animal.csv", index=False)
     return df_export_animal
 
+
+#function that reformats vehicle and exports it to "vehicle.csv"
 def export_vehicle(df):
     df_vehicle = df[['accID', 'Involving']]
     df_export_vehicle = df_vehicle[df_vehicle.Involving != "None"]
