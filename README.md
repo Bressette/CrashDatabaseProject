@@ -13,4 +13,4 @@ and the layout of the tables was based on an entity relationship diagram that wa
 minimize data redundancy and maintain a high level of normalization.
 
 ## Database Structure
-![ERD](https://github.com/Bressette/crashDatabaseProject/blob/master/crashDatabaseProject/ERD.png)
+![ERD](https://github.com/Bressette/crashDatabaseProject/blob/master/Database%20Design%20Docs/ERD.png)
